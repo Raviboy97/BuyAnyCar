@@ -19,7 +19,9 @@ public class Register extends AppCompatActivity {
     Button calllogin,register;
     ImageView image;
     TextView logoText,logantext;
-    TextInputLayout username,password;
+    TextInputLayout username,password,fullname,email,mnumber;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,10 @@ public class Register extends AppCompatActivity {
         logantext = findViewById(R.id.slogan_signup);
         username = findViewById(R.id.uname);
         password = findViewById(R.id.pass);
+        fullname = findViewById(R.id.fname);
+        email = findViewById(R.id.email);
+        mnumber = findViewById(R.id.mobile);
+
 
         calllogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,3 +63,5 @@ public class Register extends AppCompatActivity {
         });
     }
 }
+
+    

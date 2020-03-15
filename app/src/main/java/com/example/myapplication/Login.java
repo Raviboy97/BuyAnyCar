@@ -16,7 +16,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class Login extends AppCompatActivity {
 
-    Button callRegister,Login;
+    Button callRegister,Login_btn;
     ImageView image;
     TextView logoText, sloganText;
     TextInputLayout userName,passwrd;
@@ -27,6 +27,7 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+
         //Hooks
          final Button callRegister = findViewById(R.id.signup_screen);
          image = findViewById(R.id.logo_image);
@@ -34,7 +35,7 @@ public class Login extends AppCompatActivity {
          sloganText = findViewById(R.id.slogan_name);
          userName = findViewById(R.id.username);
          passwrd = findViewById(R.id.password);
-         Login = findViewById(R.id.signin_btn);
+         Login_btn = findViewById(R.id.signin_btn);
 
         callRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +47,7 @@ public class Login extends AppCompatActivity {
                 pairs[2] = new <View,String> Pair(sloganText,"logo_desc");
                 pairs[3] = new <View,String> Pair(userName,"username_tran");
                 pairs[4] = new <View,String> Pair(passwrd,"password_tran");
-                pairs[5] = new <View,String> Pair(Login,"signin_tran");
+                pairs[5] = new <View,String> Pair(Login_btn,"signin_tran");
                 pairs[6] = new <View,String> Pair(callRegister,"signup_tran");
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -55,6 +56,14 @@ public class Login extends AppCompatActivity {
                 }
 
 
+            }
+        });
+
+        Login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this,Dashboard.class);
+                startActivity(intent);
             }
         });
     }
