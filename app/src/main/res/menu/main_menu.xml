@@ -9,9 +9,10 @@
             android:title="Home" />
     </group>
 
-    <group android:checkableBehavior="single">
-        <item android:title="Profile">
-            <menu>
+
+    <item android:title="Profile">
+        <menu>
+            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_profile"
                     android:icon="@drawable/profile_icon"
@@ -20,24 +21,23 @@
                     android:id="@+id/nav_logout"
                     android:icon="@drawable/logout_icon"
                     android:title="Logout" />
-            </menu>
+            </group>
+        </menu>
 
-        </item>
+    </item>
 
-
-    </group>
 
     <item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:title="Share"
-                android:icon="@drawable/share_icon"/>
+                android:icon="@drawable/share_icon"
+                android:title="Share" />
 
             <item
                 android:id="@+id/nav_rate"
-                android:title="Rate Us"
-                android:icon="@drawable/rateus_icon"/>
+                android:icon="@drawable/rateus_icon"
+                android:title="Rate Us" />
         </menu>
 
     </item>
