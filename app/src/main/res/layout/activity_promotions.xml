@@ -141,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:layout_toRightOf="@id/car2"
-                            android:text="asasasaa"
+                            android:text="sasasasas"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="#000000" />
 
