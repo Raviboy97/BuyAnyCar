@@ -48,29 +48,29 @@
                     android:id="@+id/accessories_card1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:padding="20dp"
                     app:cardBackgroundColor="#fece2f">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp">
+                        android:padding="6dp">
 
                         <ImageView
                             android:id="@+id/car1"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
-                            android:padding="5dp"
+                            android:padding="6dp"
                             android:src="@drawable/carpart" />
 
                         <TextView
                             android:id="@+id/title1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
+                            android:layout_margin="6dp"
                             android:layout_toRightOf="@id/car1"
-                            android:text="asasasasas"
+                            android:text="new"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="#000000" />
 
@@ -79,10 +79,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/title1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginTop="6dp"
                             android:layout_toRightOf="@id/car1"
-                            android:text="asasasasasdas"
+                            android:text="new"
                             android:textAlignment="gravity" />
 
                         <TextView
@@ -90,12 +90,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/short_desc1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginTop="6dp"
                             android:layout_toRightOf="@id/car1"
                             android:background="@color/colorPrimary"
                             android:fontFamily="@font/baloo"
-                            android:paddingLeft="15dp"
+                            android:paddingLeft="10dp"
                             android:paddingRight="15dp"
                             android:text="4.7" />
 
@@ -107,7 +107,7 @@
                             android:layout_toRightOf="@id/car1"
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="LKR 100"
+                            android:text="LKR 250"
                             android:textColor="#000000"
                             android:textStyle="bold" />
 
@@ -120,19 +120,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:padding="20dp"
+                    android:padding="25dp"
                     app:cardBackgroundColor="#fece2f">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp">
+                        android:padding="12dp">
 
                         <ImageView
                             android:id="@+id/car2"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
-                            android:padding="5dp"
+                            android:padding="10dp"
                             android:src="@drawable/carpart" />
 
                         <TextView
@@ -141,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:layout_toRightOf="@id/car2"
-                            android:text="asasasaa"
+                            android:text="new"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="#000000" />
 
@@ -153,7 +153,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
                             android:layout_toRightOf="@id/car2"
-                            android:text="sasasdasdsa"
+                            android:text="new"
                             android:textAlignment="gravity" />
 
                         <TextView
@@ -177,7 +177,7 @@
                             android:layout_below="@id/textViewRating2"
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="LKR 1,000"
+                            android:text="LKR 2,200"
                             android:layout_toRightOf="@id/car2"
                             android:textColor="#000000"
                             android:textStyle="bold" />
@@ -283,7 +283,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:layout_toRightOf="@id/car4"
-                            android:text="sadasda"
+                            android:text="BMW"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="#000000" />
 
@@ -295,7 +295,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
                             android:layout_toRightOf="@id/car4"
-                            android:text="asassaasas"
+                            android:text="AUDI"
                             android:textAlignment="gravity" />
 
                         <TextView

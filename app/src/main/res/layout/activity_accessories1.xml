@@ -76,7 +76,7 @@
 
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="123dp"
+                            android:layout_height="122dp"
                             android:padding="15dp">
 
                             <TextView
@@ -84,19 +84,19 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="16dp"
+                                android:layout_marginTop="12dp"
                                 android:fontFamily="@font/bungee"
                                 android:includeFontPadding="false"
-                                android:text="Mercedes Benz S300 AMG LWB 2014 Tyre pack"
-                                android:textSize="20sp" />
+                                android:text="BMW i8 AMG LWB 2019 Tyre pack"
+                                android:textSize="24sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/total_buy_label"
                                 android:includeFontPadding="false"
-                                android:paddingTop="5dp"
-                                android:text="LKR 1,000"
+                                android:paddingTop="8dp"
+                                android:text="LKR 2,5000"
                                 android:textColor="#000000" />
 
 
@@ -127,7 +127,7 @@
                             android:fontFamily="@font/baloo"
                             android:text="DESCRIPTION"
                             android:textColor="#000"
-                            android:textSize="20dp" />
+                            android:textSize="23sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
