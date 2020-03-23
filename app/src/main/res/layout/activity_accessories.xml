@@ -27,7 +27,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                app:title="Accessories"
+                app:title="Promotions"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:background="#00008577"
@@ -45,6 +45,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/accessories_card1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"

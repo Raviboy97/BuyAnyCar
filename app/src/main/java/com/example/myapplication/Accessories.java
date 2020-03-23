@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -19,6 +21,7 @@ public class Accessories extends AppCompatActivity implements NavigationView.OnN
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    CardView accces1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class Accessories extends AppCompatActivity implements NavigationView.OnN
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+        accces1 = findViewById(R.id.accessories_card1);
 
         setSupportActionBar(toolbar);
 
@@ -37,6 +41,14 @@ public class Accessories extends AppCompatActivity implements NavigationView.OnN
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        accces1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Accessories.this,Accessories1.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

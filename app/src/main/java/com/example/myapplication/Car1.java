@@ -11,30 +11,31 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class Promotions extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Car1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    CardView cardpromo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_promotions);
-
+        setContentView(R.layout.activity_car1);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-        cardpromo = findViewById(R.id.promo_card1);
+
+        //toolbar
 
         setSupportActionBar(toolbar);
+
+
+        //navigation drawer menu
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -43,13 +44,6 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        cardpromo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(Promotions.this,Promotion1.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -63,7 +57,7 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
 
     }
 
-
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
@@ -71,7 +65,7 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
                 break;
 
             case R.id.nav_profile:
-                Intent intent = new Intent(Promotions.this, UserProfile.class);
+                Intent intent = new Intent(Car1.this, UserProfile.class);
                 startActivity(intent);
                 break;
 

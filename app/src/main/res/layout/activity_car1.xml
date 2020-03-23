@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".BuyCar"
+    tools:openDrawer="start">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/main_menu" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="409dp"
+                android:layout_height="wrap_content"
+                android:background="#fece2f"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="Car Details" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:padding="20dp"
+                    app:cardCornerRadius="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/benzcar3" />
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="143dp"
+                    android:padding="10dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="#ffffff"
+                        app:cardElevation="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="123dp"
+                            android:padding="15dp">
+
+                            <TextView
+                                android:id="@+id/total_buy_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="@font/bungee"
+                                android:includeFontPadding="false"
+                                android:text="Mercedes Benz S300 AMG LWB 2014"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/total_buy_label"
+                                android:includeFontPadding="false"
+                                android:paddingTop="5dp"
+                                android:text="LKR 1,000,000"
+                                android:textColor="#000000" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="143dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="20dp"
+                        app:cardBackgroundColor="#fece2f">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="142dp"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:id="@+id/car1"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="40dp"
+
+                                android:src="@drawable/fuel" />
+
+                            <TextView
+                                android:id="@+id/title1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_margin="5dp"
+                                android:fontFamily="@font/baloo"
+                                android:text="Fuel Economy Rating"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="#000000"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/cityfuel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@id/title1"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/aclonica"
+                                android:text="CITY"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/title1"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/bungee"
+                                android:text="10" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@id/cityfuel"
+                                android:layout_marginLeft="15dp"
+                                android:layout_toRightOf="@id/title1"
+                                android:fontFamily="@font/aclonica"
+                                android:text="HIGHWAY" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/title1"
+                                android:layout_marginLeft="15dp"
+                                android:layout_toRightOf="@id/title1"
+                                android:fontFamily="@font/bungee"
+                                android:text="15" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@id/car1"
+                                android:layout_marginBottom="-37dp"
+                                android:text="Actual rating will vary with options,driving Conditions,Driving Habits and Vehicle Conditions" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:id="@+id/car_desc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo"
+                            android:text="DESCRIPTION"
+                            android:textColor="#000"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="asasasasasasasassssssssssssssssssssddadadadadadad"
+                            android:layout_marginTop="30dp"/>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:background="#000000"
+                        android:textColor="#ffffff"
+                        android:text="RENT"
+                        android:padding="5dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

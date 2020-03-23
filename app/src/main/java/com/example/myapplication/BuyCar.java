@@ -4,21 +4,30 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BuyCar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    CardView car1card;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +37,8 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+        car1card = findViewById(R.id.car1_card);
+
 
         setSupportActionBar(toolbar);
 
@@ -37,6 +48,24 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        ImageSlider imageSlider = findViewById(R.id.slider);
+
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.benzcar1,"Buy Brand New Cars"));
+        slideModels.add(new SlideModel(R.drawable.benzcar2,"Buy Used Cars"));
+        slideModels.add(new SlideModel(R.drawable.benzcar3,"Various Collection"));
+
+        imageSlider.setImageList(slideModels,true);
+
+
+        car1card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BuyCar.this,Car1.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -72,3 +101,5 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
         return true;
     }
 }
+
+

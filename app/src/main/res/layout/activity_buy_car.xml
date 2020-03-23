@@ -9,17 +9,18 @@
     tools:context=".BuyCar"
     tools:openDrawer="start">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu" />
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/header"
+            app:menu="@menu/main_menu" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,16 +28,16 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                app:title="Buy Car"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
-                android:background="#00008577"
+                android:background="#fece2f"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:navigationIcon="@drawable/menu" />
+                app:title="Buy Car" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,6 +46,134 @@
                 app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:padding="20dp"
+                    app:cardCornerRadius="6dp">
+
+                    <com.denzcoskun.imageslider.ImageSlider
+                        android:id="@+id/slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        app:auto_cycle="true"
+                        app:corner_radius="25"
+                        app:delay="0"
+                        app:error_image="@drawable/image_back"
+                        app:period="2000"
+                        app:placeholder="@drawable/image_back" />
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="125dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="#fece2f"
+                        app:cardCornerRadius="50dp"
+                        app:cardElevation="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="5dp">
+
+
+                            <ImageView
+                                android:id="@+id/new_icon"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/brandnew" />
+
+                            <TextView
+                                android:id="@+id/total_buy_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/new_icon"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="@font/bungee"
+                                android:includeFontPadding="false"
+                                android:text="New Car"
+                                android:textSize="20sp" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="125dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="#fece2f"
+                        app:cardCornerRadius="50dp"
+                        app:cardElevation="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="5dp">
+
+
+                            <ImageView
+                                android:id="@+id/used_icon"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/used" />
+
+                            <TextView
+                                android:id="@+id/total_rent_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/used_icon"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="17dp"
+                                android:fontFamily="@font/bungee"
+                                android:includeFontPadding="false"
+                                android:text="Used Car"
+                                android:textSize="20sp" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:padding="5dp">
+
+                        <SearchView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:iconifiedByDefault="false"
+                            android:queryHint="Search Car" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/car1_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
