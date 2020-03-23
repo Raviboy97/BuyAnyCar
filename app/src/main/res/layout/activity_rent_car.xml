@@ -58,16 +58,21 @@
 
                         <ImageView
                             android:id="@+id/car1"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
+                            android:layout_width="124dp"
+                            android:layout_height="125dp"
                             android:padding="5dp"
                             android:src="@drawable/benzcar1" />
 
                         <TextView
                             android:id="@+id/title1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
+                            android:layout_width="224dp"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="5dp"
                             android:layout_toRightOf="@id/car1"
                             android:text="Mercedes Benz S300 AMG LWB 2014"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -131,18 +136,23 @@
 
                         <ImageView
                             android:id="@+id/car2"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
+                            android:layout_width="128dp"
+                            android:layout_height="131dp"
                             android:padding="5dp"
                             android:src="@drawable/benzcar1" />
 
                         <TextView
                             android:id="@+id/title2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
+                            android:layout_width="224dp"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="5dp"
                             android:layout_toRightOf="@id/car2"
-                            android:text="Mercedes Benz S300 AMG LWB 2014"
+                            android:text="@string/me1"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="#000000" />
 
@@ -204,16 +214,21 @@
 
                         <ImageView
                             android:id="@+id/car3"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
+                            android:layout_width="134dp"
+                            android:layout_height="118dp"
                             android:padding="5dp"
                             android:src="@drawable/benzcar1" />
 
                         <TextView
                             android:id="@+id/title3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
+                            android:layout_width="232dp"
+                            android:layout_height="81dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="5dp"
                             android:layout_toRightOf="@id/car3"
                             android:text="Mercedes Benz S300 AMG LWB 2014"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
