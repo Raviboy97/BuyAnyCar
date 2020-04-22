@@ -1,4 +1,10 @@
-package com.example.myapplication;
+package com.example.myapplication.Customer;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -8,37 +14,26 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.myapplication.Accessories1;
+import com.example.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class BuyCar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Accessories extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    CardView car1card;
-
+    CardView accces1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buy_car);
+        setContentView(R.layout.activity_accessories);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-        car1card = findViewById(R.id.car1_card);
-
+        accces1 = findViewById(R.id.accessories_card1);
 
         setSupportActionBar(toolbar);
 
@@ -49,24 +44,13 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        ImageSlider imageSlider = findViewById(R.id.slider);
-
-        List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel(R.drawable.benzcar1,"Buy Brand New Cars"));
-        slideModels.add(new SlideModel(R.drawable.benzcar2,"Buy Used Cars"));
-        slideModels.add(new SlideModel(R.drawable.benzcar3,"Various Collection"));
-
-        imageSlider.setImageList(slideModels,true);
-
-
-        car1card.setOnClickListener(new View.OnClickListener() {
+        accces1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BuyCar.this,Car1.class);
+                Intent intent = new Intent(Accessories.this, Accessories1.class);
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -88,7 +72,7 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
                 break;
 
             case R.id.nav_profile:
-                Intent intent = new Intent(BuyCar.this, UserProfile.class);
+                Intent intent = new Intent(Accessories.this, UserProfile.class);
                 startActivity(intent);
                 break;
 
@@ -101,5 +85,3 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
         return true;
     }
 }
-
-

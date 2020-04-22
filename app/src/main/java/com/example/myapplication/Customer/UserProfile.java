@@ -1,9 +1,11 @@
-package com.example.myapplication;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.myapplication.Customer;
 
 import android.os.Bundle;
 import android.view.WindowManager;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.R;
 
 public class UserProfile extends AppCompatActivity {
 

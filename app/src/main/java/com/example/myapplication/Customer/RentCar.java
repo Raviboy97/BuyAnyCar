@@ -1,38 +1,35 @@
-package com.example.myapplication;
+package com.example.myapplication.Customer;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
+import com.example.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
-public class Promotions extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+public class RentCar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    CardView cardpromo;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_promotions);
-
+        setContentView(R.layout.activity_rent_car);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-        cardpromo = findViewById(R.id.promo_card1);
 
         setSupportActionBar(toolbar);
 
@@ -42,14 +39,6 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-
-        cardpromo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(Promotions.this,Promotion1.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -71,7 +60,7 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
                 break;
 
             case R.id.nav_profile:
-                Intent intent = new Intent(Promotions.this, UserProfile.class);
+                Intent intent = new Intent(RentCar.this, UserProfile.class);
                 startActivity(intent);
                 break;
 

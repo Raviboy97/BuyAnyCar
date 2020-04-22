@@ -1,4 +1,11 @@
-package com.example.myapplication;
+package com.example.myapplication.Customer;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -8,14 +15,10 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.Toast;
-
+import com.example.myapplication.LoginRegister.Login;
+import com.example.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -59,7 +62,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         buycar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this,BuyCar.class);
+                Intent intent = new Intent(Dashboard.this, BuyCar.class);
                 startActivity(intent);
             }
         });
@@ -67,7 +70,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         rentcar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this,RentCar.class);
+                Intent intent = new Intent(Dashboard.this, RentCar.class);
                 startActivity(intent);
             }
         });
@@ -75,7 +78,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         accessories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this,Accessories.class);
+                Intent intent = new Intent(Dashboard.this, Accessories.class);
                 startActivity(intent);
             }
         });
@@ -83,7 +86,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         promotion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this,Promotions.class);
+                Intent intent = new Intent(Dashboard.this, Promotions.class);
                 startActivity(intent);
             }
         });
@@ -91,7 +94,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this,History.class);
+                Intent intent = new Intent(Dashboard.this, History.class);
                 startActivity(intent);
             }
         });
@@ -123,6 +126,13 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             case R.id.nav_profile:
                 Intent intent = new Intent(Dashboard.this, UserProfile.class);
                 startActivity(intent);
+                break;
+
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
+                finish();
                 break;
 
             case R.id.nav_share:

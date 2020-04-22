@@ -6,16 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".BuyCar"
+    tools:context=".Customer.BuyCar"
     tools:openDrawer="start">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu" />
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/nav_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="start"-->
+<!--        app:headerLayout="@layout/header"-->
+<!--        app:menu="@menu/main_menu" />-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
@@ -56,9 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:src="@drawable/benzcar3" />
-
-
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
 
                 <LinearLayout
@@ -67,23 +65,23 @@
                     android:padding="10dp"
                     android:orientation="vertical">
 
-                    <com.google.android.material.card.MaterialCardView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        app:cardBackgroundColor="#ffffff"
+                        app:cardBackgroundColor="#fec"
                         app:cardElevation="10dp">
 
-                        <RelativeLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="123dp"
-                            android:padding="15dp">
+                            android:layout_height="wrap_content"
+                            android:padding="15dp"
+                            android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/total_buy_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
                                 android:layout_marginTop="16dp"
                                 android:fontFamily="@font/bungee"
                                 android:includeFontPadding="false"
@@ -93,16 +91,13 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/total_buy_label"
                                 android:includeFontPadding="false"
-                                android:paddingTop="5dp"
                                 android:text="LKR 1,000,000"
-                                android:textColor="#000000" />
+                                android:textColor="#000000"
+                                android:textSize="18sp" />
 
-
-                        </RelativeLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
 
                 </LinearLayout>
@@ -113,17 +108,18 @@
                     android:layout_height="143dp"
                     android:orientation="vertical">
 
-                    <com.google.android.material.card.MaterialCardView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="20dp"
+                        app:cardElevation="15dp"
                         app:cardBackgroundColor="#fece2f">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="142dp"
-                            android:padding="8dp">
+                            android:layout_height="wrap_content"
+                            android:padding="2dp">
 
                             <ImageView
                                 android:id="@+id/car1"
@@ -183,16 +179,109 @@
                                 android:text="15" />
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_below="@+id/car1"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_alignBottom="@id/car1"
-                                android:layout_marginBottom="-37dp"
                                 android:text="Actual rating will vary with options,driving Conditions,Driving Habits and Vehicle Conditions" />
 
 
                         </RelativeLayout>
 
-                    </com.google.android.material.card.MaterialCardView>
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="2dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="15dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/textViewFurtherInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/baloo"
+                                android:text="DETAILS"
+                                android:textColor="#000"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/textViewCarBrand"
+                                android:layout_below="@+id/textViewFurtherInfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="Brand : asaas"/>
+
+                            <TextView
+                                android:id="@+id/textViewCarModel"
+                                android:layout_below="@+id/textViewCarBrand"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="Model : adasdasd"/>
+
+                            <TextView
+                                android:id="@+id/textViewCarBodyType"
+                                android:layout_below="@+id/textViewCarModel"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="Body Type : asasas"/>
+                            <TextView
+                                android:id="@+id/textViewCarCondition"
+                                android:layout_below="@+id/textViewCarBodyType"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="Condition : Brand New"/>
+                            <TextView
+                                android:id="@+id/textViewEngineCapacity"
+                                android:layout_below="@+id/textViewCarCondition"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="Engine Capacity 2500"/>
+                            <TextView
+                                android:id="@+id/textViewMileage"
+                                android:layout_below="@+id/textViewEngineCapacity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="Mileage : 25000"/>
+                            <TextView
+                                android:id="@+id/textViewModelYear"
+                                android:layout_below="@+id/textViewMileage"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="Model Year : 2000"/>
+                            <TextView
+                                android:id="@+id/textViewTransmission"
+                                android:layout_below="@+id/textViewModelYear"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="Transmission : Auto"/>
+
+
+                        </RelativeLayout>
+
+
+
+
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
@@ -201,9 +290,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.google.android.material.card.MaterialCardView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="73dp"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="15dp"
                         android:padding="20dp">
 
                         <TextView
@@ -221,9 +311,7 @@
                             android:text="asasasasasasasassssssssssssssssssssddadadadadadad"
                             android:layout_marginTop="30dp"/>
 
-
-                    </com.google.android.material.card.MaterialCardView>
-
+                    </androidx.cardview.widget.CardView>
 
 
                 </LinearLayout>
@@ -234,13 +322,15 @@
                     android:orientation="vertical">
 
                     <Button
+                        android:id="@+id/BuyCarButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
                         android:layout_gravity="right"
                         android:background="#000000"
                         android:textColor="#ffffff"
-                        android:text="RENT"
-                        android:padding="5dp"/>
+                        android:text="BUY"
+                        android:layout_marginRight="25dp" />
                 </LinearLayout>
 
             </LinearLayout>

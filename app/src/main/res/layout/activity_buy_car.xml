@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".BuyCar"
+    tools:context=".Customer.BuyCar"
     tools:openDrawer="start">
 
         <com.google.android.material.navigation.NavigationView
@@ -28,7 +28,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_width="409dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fece2f"
                 android:minHeight="?attr/actionBarSize"
@@ -40,17 +40,13 @@
 
 
             <LinearLayout
+                android:id="@+id/linierTop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:padding="20dp"
-                    app:cardCornerRadius="6dp">
+
 
                     <com.denzcoskun.imageslider.ImageSlider
                         android:id="@+id/slider"
@@ -64,7 +60,7 @@
                         app:placeholder="@drawable/image_back" />
 
 
-                </com.google.android.material.card.MaterialCardView>
+
 
 
                 <LinearLayout
@@ -72,18 +68,15 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp">
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="125dp"
-                        android:layout_margin="10dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="#fece2f"
-                        app:cardCornerRadius="50dp"
-                        app:cardElevation="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
 
                         <RelativeLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginEnd="60sp"
                             android:padding="5dp">
 
 
@@ -109,19 +102,12 @@
 
                         </RelativeLayout>
 
-                    </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="125dp"
-                        android:layout_margin="10dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="#fece2f"
-                        app:cardCornerRadius="50dp"
-                        app:cardElevation="10dp">
+
+
 
                         <RelativeLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:padding="5dp">
 
@@ -147,8 +133,9 @@
 
 
                         </RelativeLayout>
+                    </LinearLayout>
 
-                    </com.google.android.material.card.MaterialCardView>
+
 
                 </LinearLayout>
 
@@ -157,315 +144,28 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp">
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:padding="5dp">
 
                         <SearchView
+                            android:id="@+id/inputSearch_BuyCar"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:iconifiedByDefault="false"
                             android:queryHint="Search Car" />
-                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
-
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/car1_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:padding="20dp"
-                    app:cardBackgroundColor="#fece2f">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:id="@+id/car1"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:padding="5dp"
-                            android:src="@drawable/benzcar1" />
-
-                        <TextView
-                            android:id="@+id/title1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_toRightOf="@id/car1"
-                            android:text="Mercedes Benz S300 AMG LWB 2014"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="#000000" />
-
-                        <TextView
-                            android:id="@+id/short_desc1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/title1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car1"
-                            android:text="Trim / Edition:AMG LWB
-                              Model year:2014
-                              Condition:Used
-                              Body type:Saloon"
-                            android:textAlignment="gravity" />
-
-                        <TextView
-                            android:id="@+id/textViewRating1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/short_desc1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car1"
-                            android:background="@color/colorPrimary"
-                            android:fontFamily="@font/baloo"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:text="4.7" />
-
-                        <TextView
-                            android:id="@+id/textViewPrice1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewRating1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:text="LKR 1,000,000"
-                            android:textColor="#000000"
-                            android:textStyle="bold" />
-
-
-                    </RelativeLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:padding="20dp"
-                    app:cardBackgroundColor="#fece2f">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:id="@+id/car2"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:padding="5dp"
-                            android:src="@drawable/benzcar1" />
-
-                        <TextView
-                            android:id="@+id/title2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_toRightOf="@id/car2"
-                            android:text="Mercedes Benz S300 AMG LWB 2014"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="#000000" />
-
-                        <TextView
-                            android:id="@+id/short_desc2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/title2"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car2"
-                            android:text="Trim / Edition:AMG LWB
-                              Model year:2014
-                              Condition:Used
-                              Body type:Saloon"
-                            android:textAlignment="gravity" />
-
-                        <TextView
-                            android:id="@+id/textViewRating2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/short_desc2"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car2"
-                            android:background="@color/colorPrimary"
-                            android:fontFamily="@font/baloo"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:text="4.7" />
-
-                        <TextView
-                            android:id="@+id/textViewPrice2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewRating2"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:text="LKR 1,000,000"
-                            android:textColor="#000000"
-                            android:textStyle="bold" />
-
-
-                    </RelativeLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:padding="20dp"
-                    app:cardBackgroundColor="#fece2f">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:id="@+id/car3"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:padding="5dp"
-                            android:src="@drawable/benzcar1" />
-
-                        <TextView
-                            android:id="@+id/title3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_toRightOf="@id/car3"
-                            android:text="Mercedes Benz S300 AMG LWB 2014"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="#000000" />
-
-                        <TextView
-                            android:id="@+id/short_desc3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/title3"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car3"
-                            android:text="Trim / Edition:AMG LWB
-                              Model year:2014
-                              Condition:Used
-                              Body type:Saloon"
-                            android:textAlignment="gravity" />
-
-                        <TextView
-                            android:id="@+id/textViewRating3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/short_desc3"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car3"
-                            android:background="@color/colorPrimary"
-                            android:fontFamily="@font/baloo"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:text="4.7" />
-
-                        <TextView
-                            android:id="@+id/textViewPrice3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewRating3"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:text="LKR 1,000,000"
-                            android:textColor="#000000"
-                            android:textStyle="bold" />
-
-
-                    </RelativeLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:padding="20dp"
-                    app:cardBackgroundColor="#fece2f">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:id="@+id/car4"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:padding="5dp"
-                            android:src="@drawable/benzcar1" />
-
-                        <TextView
-                            android:id="@+id/title4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_toRightOf="@id/car4"
-                            android:text="Mercedes Benz S300 AMG LWB 2014"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="#000000" />
-
-                        <TextView
-                            android:id="@+id/short_desc4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/title4"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car4"
-                            android:text="Trim / Edition:AMG LWB
-                              Model year:2014
-                              Condition:Used
-                              Body type:Saloon"
-                            android:textAlignment="gravity" />
-
-                        <TextView
-                            android:id="@+id/textViewRating4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/short_desc4"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car4"
-                            android:background="@color/colorPrimary"
-                            android:fontFamily="@font/baloo"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:text="4.7" />
-
-                        <TextView
-                            android:id="@+id/textViewPrice4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewRating4"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:text="LKR 1,000,000"
-                            android:textColor="#000000"
-                            android:textStyle="bold" />
-
-
-                    </RelativeLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
+                
             </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10sp"
+                app:layout_constraintTop_toBottomOf="@+id/linierTop">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recyclerViewBuyCar"/>
+
+            </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
