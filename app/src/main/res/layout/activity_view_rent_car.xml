@@ -36,7 +36,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="Car Details" />
+                app:title="Rent Car Details" />
 
 
             <LinearLayout
@@ -53,7 +53,7 @@
                     app:cardCornerRadius="6dp">
 
                     <ImageView
-                        android:id="@+id/singleCarViewImage"
+                        android:id="@+id/singleRentCarViewImage"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:src="@drawable/benzcar3" />
@@ -80,7 +80,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/singleCarTitle"
+                                android:id="@+id/singleRentCarTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
@@ -90,7 +90,7 @@
                                 android:textSize="20sp" />
 
                             <TextView
-                                android:id="@+id/singleCarPrice"
+                                android:id="@+id/singleRentCarPrice"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:includeFontPadding="false"
@@ -155,7 +155,7 @@
                                 android:textSize="15sp" />
 
                             <TextView
-                                android:id="@+id/cityFuelView"
+                                android:id="@+id/cityFuelViewRentCar"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/title1"
@@ -173,7 +173,7 @@
                                 android:text="HIGHWAY" />
 
                             <TextView
-                                android:id="@+id/highwayFuelView"
+                                android:id="@+id/highwayFuelViewRentCar"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/title1"
@@ -221,7 +221,7 @@
                                 android:textSize="20dp" />
 
                             <TextView
-                                android:id="@+id/textViewCarBrand"
+                                android:id="@+id/textViewRentCarBrand"
                                 android:layout_below="@+id/textViewFurtherInfo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -229,51 +229,45 @@
                                 android:text="Brand : asaas"/>
 
                             <TextView
-                                android:id="@+id/textViewCarModel"
-                                android:layout_below="@+id/textViewCarBrand"
+                                android:id="@+id/textViewRentCarModel"
+                                android:layout_below="@+id/textViewRentCarBrand"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp"
                                 android:text="Model : adasdasd"/>
 
                             <TextView
-                                android:id="@+id/textViewCarBodyType"
-                                android:layout_below="@+id/textViewCarModel"
+                                android:id="@+id/textViewRentCarBodyType"
+                                android:layout_below="@+id/textViewRentCarModel"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp"
                                 android:text="Body Type : asasas"/>
+
                             <TextView
-                                android:id="@+id/textViewCarCondition"
-                                android:layout_below="@+id/textViewCarBodyType"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="15dp"
-                                android:text="Condition : Brand New"/>
-                            <TextView
-                                android:id="@+id/textViewEngineCapacity"
-                                android:layout_below="@+id/textViewCarCondition"
+                                android:id="@+id/textViewRentCarEngineCapacity"
+                                android:layout_below="@+id/textViewRentCarBodyType"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp"
                                 android:text="Engine Capacity 2500"/>
                             <TextView
-                                android:id="@+id/textViewMileage"
-                                android:layout_below="@+id/textViewEngineCapacity"
+                                android:id="@+id/textViewRentCarMileage"
+                                android:layout_below="@+id/textViewRentCarEngineCapacity"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp"
                                 android:text="Mileage : 25000"/>
                             <TextView
-                                android:id="@+id/textViewModelYear"
-                                android:layout_below="@+id/textViewMileage"
+                                android:id="@+id/textViewRentCarModelYear"
+                                android:layout_below="@+id/textViewRentCarMileage"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp"
                                 android:text="Model Year : 2000"/>
                             <TextView
-                                android:id="@+id/textViewTransmission"
-                                android:layout_below="@+id/textViewModelYear"
+                                android:id="@+id/textViewRentCarTransmission"
+                                android:layout_below="@+id/textViewRentCarModelYear"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp"
@@ -310,7 +304,7 @@
                             android:textSize="20dp" />
 
                         <TextView
-                            android:id="@+id/textViewDescription"
+                            android:id="@+id/textViewRentCarDescription"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="asasasasasasasassssssssssssssssssssddadadadadadad"
@@ -328,14 +322,14 @@
                     android:layout_marginBottom="10dp">
 
                     <Button
-                        android:id="@+id/BuyCarButton"
+                        android:id="@+id/rentCarButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:layout_gravity="right"
                         android:background="#000000"
                         android:textColor="#ffffff"
-                        android:text="BUY"
+                        android:text="RENT"
                         android:layout_marginRight="25dp" />
                 </LinearLayout>
 

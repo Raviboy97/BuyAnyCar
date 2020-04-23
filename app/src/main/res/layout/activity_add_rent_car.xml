@@ -46,7 +46,7 @@
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
@@ -60,8 +60,7 @@
                         android:scaleType="fitXY"
                         android:id="@+id/image_view_add_rent_car"/>
 
-
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -72,7 +71,7 @@
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@id/image_card">
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="20dp">
@@ -85,141 +84,109 @@
                         android:layout_marginBottom="20dp"
                         android:padding="20dp">
 
-                        <com.google.android.material.textfield.TextInputLayout
+                        <EditText
                             android:id="@+id/add_rent_car_topic"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:hint="Topic"
+                            android:inputType="text"
+                            android:layout_marginBottom="10dp"/>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Topic" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                       <EditText
+                           android:id="@+id/add_rent_car_Brand"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:hint="Brand"
+                           android:inputType="textAutoComplete"
+                           android:layout_marginBottom="10dp"/>
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/add_rent_car_Brand"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Brand"
-                                android:inputType="textAutoComplete"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
+                        <EditText
                             android:id="@+id/add_rent_car_model"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:hint="Model"
+                            android:inputType="textAutoComplete"
+                            android:layout_marginBottom="10dp"/>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Model"
-                                android:inputType="textAutoComplete"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
+                        <EditText
                             android:id="@+id/add_rent_car_year"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:hint="Model Year"
+                            android:inputType="date"
+                            android:layout_marginBottom="10dp"/>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Model Year"
-                                android:inputType="date"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
+                        <EditText
                             android:id="@+id/add_rent_car_bodyType"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:hint="Body Type"
+                            android:inputType="text"
+                            android:layout_marginBottom="10dp"/>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Body Type"
-                                android:inputType="text"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
+                        <EditText
                             android:id="@+id/add_rent_car_transmission"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:hint="Transmission"
+                            android:inputType="text"
+                            android:layout_marginBottom="10dp"/>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Transmission"
-                                android:inputType="text"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
+                        <EditText
                             android:id="@+id/add_rent_car_enginecapacity"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:hint="Engine Capacity (CC)"
+                            android:inputType="number"
+                            android:layout_marginBottom="10dp"/>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Engine Capacity (CC)"
-                                android:inputType="number"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
+                        <EditText
                             android:id="@+id/add_rent_car_mileage"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:hint="Mileage (KM)"
+                            android:inputType="number"
+                            android:layout_marginBottom="10dp"/>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Mileage (KM)"
-                                android:inputType="number"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
+                        <EditText
                             android:id="@+id/add_rent_car_descrip"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:hint="Description"
+                            android:inputType="text"
+                            android:layout_marginBottom="10dp"/>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Description" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
+                        <EditText
                             android:id="@+id/add_rent_car_rent_price"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:hint="Rent Price Per KM"
+                            android:inputType="numberDecimal"
+                            android:layout_marginBottom="10dp"/>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Rent Price Per KM"
-                                android:inputType="number"/>
-                        </com.google.android.material.textfield.TextInputLayout>
+                        <EditText
+                            android:id="@+id/add_rent_car_fuel_City"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Fuel Consumption City"
+                            android:inputType="numberDecimal"
+                            android:layout_marginBottom="10dp"/>
+
+                        <EditText
+                            android:id="@+id/add_rent_car_fuel_Highway"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Fuel Consumption Highway"
+                            android:inputType="numberDecimal"
+                            android:layout_marginBottom="10dp"/>
 
 
 
                     </LinearLayout>
 
+                </androidx.cardview.widget.CardView>
 
 
-                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
             <LinearLayout

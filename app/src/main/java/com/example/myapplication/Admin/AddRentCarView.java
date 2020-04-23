@@ -1,4 +1,4 @@
-package com.example.myapplication.Customer;
+package com.example.myapplication.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.myapplication.Customer.UserProfile;
 import com.example.myapplication.Model.RentCarModel;
 import com.example.myapplication.Model.RentCarViewHolder;
 import com.example.myapplication.R;
@@ -33,30 +34,29 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RentCar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class AddRentCarView extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     SearchView InputRentCar;
-    RecyclerView RentCarRecyclerView;
-    FirebaseRecyclerOptions<RentCarModel  > options;
+    RecyclerView DeleteRentCarRecyclerView;
+    FirebaseRecyclerOptions<RentCarModel> options;
     FirebaseRecyclerAdapter<RentCarModel, RentCarViewHolder> adapter;
     DatabaseReference DataRef;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rent_car);
+        setContentView(R.layout.activity_add_rent_car_view);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+        drawerLayout = findViewById(R.id.drawer_layout_admin);
+        navigationView = findViewById(R.id.nav_view_admin);
         toolbar = findViewById(R.id.toolbar);
-        InputRentCar = findViewById(R.id.inputSearch_RentCar);
-        RentCarRecyclerView = findViewById(R.id.recyclerViewRentCar);
-        RentCarRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        RentCarRecyclerView.setHasFixedSize(true);
+        InputRentCar = findViewById(R.id.inputSearch_AddRentCarView);
+        DeleteRentCarRecyclerView = findViewById(R.id.recyclerViewAddRentCarView);
+        DeleteRentCarRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        DeleteRentCarRecyclerView.setHasFixedSize(true);
         DataRef = FirebaseDatabase.getInstance().getReference().child("Add Rent Cars");
 
         setSupportActionBar(toolbar);
@@ -81,13 +81,11 @@ public class RentCar extends AppCompatActivity implements NavigationView.OnNavig
         LoadRentCarData();
     }
 
-    private void LoadRentCarData(){
-
+    private void LoadRentCarData() {
         options = new FirebaseRecyclerOptions.Builder<RentCarModel>().setQuery(DataRef,RentCarModel.class).build();
         adapter = new FirebaseRecyclerAdapter<RentCarModel, RentCarViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull RentCarViewHolder holder, final int position, @NonNull RentCarModel model) {
-
                 holder.rCarTitle.setText(model.getRentCarTopic());
                 holder.rCarModel.setText("Model : " + model.getRentCarModel());
                 holder.rCarModelYear.setText("Model Year : " + model.getRentCarYear());
@@ -97,12 +95,11 @@ public class RentCar extends AppCompatActivity implements NavigationView.OnNavig
                 holder.v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(RentCar.this,ViewRentCar.class);
+                        Intent intent = new Intent(AddRentCarView.this, DeleteRentCar.class);
                         intent.putExtra("CarKey",getRef(position).getKey());
                         startActivity(intent);
                     }
                 });
-
             }
 
             @NonNull
@@ -113,7 +110,8 @@ public class RentCar extends AppCompatActivity implements NavigationView.OnNavig
             }
         };
         adapter.startListening();
-        RentCarRecyclerView.setAdapter(adapter);
+        DeleteRentCarRecyclerView.setAdapter(adapter);
+
     }
 
     @Override
@@ -135,7 +133,7 @@ public class RentCar extends AppCompatActivity implements NavigationView.OnNavig
                 break;
 
             case R.id.nav_profile:
-                Intent intent = new Intent(RentCar.this, UserProfile.class);
+                Intent intent = new Intent(AddRentCarView.this, UserProfile.class);
                 startActivity(intent);
                 break;
 
@@ -147,6 +145,4 @@ public class RentCar extends AppCompatActivity implements NavigationView.OnNavig
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 }

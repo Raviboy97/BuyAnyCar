@@ -46,7 +46,10 @@
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="15dp">
 
                     <com.denzcoskun.imageslider.ImageSlider
                         android:id="@+id/slider"
@@ -59,83 +62,97 @@
                         app:period="2000"
                         app:placeholder="@drawable/image_back" />
 
-
-
+                </androidx.cardview.widget.CardView>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp">
-
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center">
+                        android:layout_height="wrap_content">
 
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="60sp"
-                            android:padding="5dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
 
-
-                            <ImageView
-                                android:id="@+id/new_icon"
-                                android:layout_width="45dp"
-                                android:layout_height="45dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/brandnew" />
-
-                            <TextView
-                                android:id="@+id/total_buy_label"
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/new_icon"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="16dp"
-                                android:fontFamily="@font/bungee"
-                                android:includeFontPadding="false"
-                                android:text="New Car"
-                                android:textSize="20sp" />
+                                app:cardElevation="15dp">
 
-
-                        </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="60sp"
+                                android:padding="5dp">
 
 
 
+                                    <ImageView
+                                        android:id="@+id/new_icon"
+                                        android:layout_width="45dp"
+                                        android:layout_height="45dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:src="@drawable/brandnew" />
+
+                                    <TextView
+                                        android:id="@+id/total_buy_label"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/new_icon"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="16dp"
+                                        android:fontFamily="@font/bungee"
+                                        android:includeFontPadding="false"
+                                        android:text="New Car"
+                                        android:textSize="20sp" />
 
 
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:padding="5dp">
+                            </RelativeLayout>
+
+                            </androidx.cardview.widget.CardView>
 
 
-                            <ImageView
-                                android:id="@+id/used_icon"
-                                android:layout_width="45dp"
-                                android:layout_height="45dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/used" />
-
-                            <TextView
-                                android:id="@+id/total_rent_label"
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/used_icon"
-                                android:layout_centerInParent="true"
-                                android:layout_marginTop="17dp"
-                                android:fontFamily="@font/bungee"
-                                android:includeFontPadding="false"
-                                android:text="Used Car"
-                                android:textSize="20sp" />
+                                app:cardElevation="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:padding="5dp">
 
 
-                        </RelativeLayout>
-                    </LinearLayout>
+                                <ImageView
+                                    android:id="@+id/used_icon"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:src="@drawable/used" />
+
+                                <TextView
+                                    android:id="@+id/total_rent_label"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/used_icon"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginTop="17dp"
+                                    android:fontFamily="@font/bungee"
+                                    android:includeFontPadding="false"
+                                    android:text="Used Car"
+                                    android:textSize="20sp" />
 
 
+                            </RelativeLayout>
+
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 

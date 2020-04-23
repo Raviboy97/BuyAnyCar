@@ -59,6 +59,7 @@ public class Login extends AppCompatActivity {
          fAuth = FirebaseAuth.getInstance();
 
         if(fAuth.getCurrentUser() != null){
+            progressBar.setVisibility(View.VISIBLE);
             FirebaseUser  firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(fAuth.getCurrentUser().getUid());
             databaseReference.addValueEventListener(new ValueEventListener() {
@@ -77,6 +78,7 @@ public class Login extends AppCompatActivity {
                         finish();
                     } else {
                         Toast.makeText(Login.this, "No Redirect ", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
                     }
 
                 }

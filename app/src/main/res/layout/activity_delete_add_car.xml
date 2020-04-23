@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu" />
+        app:menu="@menu/main_menu_admin" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="Car Details" />
+                app:title="Delete Car" />
 
 
             <LinearLayout
@@ -328,14 +328,14 @@
                     android:layout_marginBottom="10dp">
 
                     <Button
-                        android:id="@+id/BuyCarButton"
+                        android:id="@+id/BuyCarDeleteButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:layout_gravity="right"
                         android:background="#000000"
                         android:textColor="#ffffff"
-                        android:text="BUY"
+                        android:text="DELETE"
                         android:layout_marginRight="25dp" />
                 </LinearLayout>
 

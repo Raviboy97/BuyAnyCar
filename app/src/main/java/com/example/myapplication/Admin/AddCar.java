@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -19,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -39,7 +39,7 @@ public class AddCar extends AppCompatActivity {
     Button addCarSave;
     RadioGroup radioGroup;
     RadioButton radioButton;
-    TextInputLayout addCarTopic,addCarBrand,addCarModel,addCarModelYear,addCarBodyType,addCarTransmission,addCarEngCapacity,addCarMilage,addCarDesc,addCarPrice;
+    EditText addCarTopic,addCarBrand,addCarModel,addCarModelYear,addCarBodyType,addCarTransmission,addCarEngCapacity,addCarMilage,addCarDesc,addCarPrice,addCarFuelCity,addCarFuelHighway;
     Uri imageUri;
     boolean isImageAdded = false;
 
@@ -69,6 +69,9 @@ public class AddCar extends AppCompatActivity {
         addCarDesc = findViewById(R.id.add_car_descrip);
         radioGroup = findViewById(R.id.addCarRadioGroup);
         addCarPrice = findViewById(R.id.add_car_price);
+        addCarFuelCity = findViewById(R.id.add_car_fuel_City);
+        addCarFuelHighway = findViewById(R.id.add_car_fuel_Highway);
+
 
         textViewProgress.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
@@ -107,7 +110,7 @@ public class AddCar extends AppCompatActivity {
     }
 
     private boolean validateTopic(){
-        String val = addCarTopic.getEditText().getText().toString();
+        String val = addCarTopic.getText().toString();
 
         if(val.isEmpty()) {
             addCarTopic.setError("Field Cannot be Empty");
@@ -117,96 +120,88 @@ public class AddCar extends AppCompatActivity {
             return false;
         }else{
             addCarTopic.setError(null);
-            addCarTopic.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateBrand(){
-        String val = addCarBrand.getEditText().getText().toString();
+        String val = addCarBrand.getText().toString();
 
         if(val.isEmpty()) {
             addCarBrand.setError("Field Cannot be Empty");
             return false;
         }else{
             addCarBrand.setError(null);
-            addCarBrand.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateModel(){
-        String val = addCarModel.getEditText().getText().toString();
+        String val = addCarModel.getText().toString();
 
         if(val.isEmpty()) {
             addCarModel.setError("Field Cannot be Empty");
             return false;
         }else{
             addCarModel.setError(null);
-            addCarModel.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateModelYear(){
-        String val = addCarModelYear.getEditText().getText().toString();
+        String val = addCarModelYear.getText().toString();
 
         if(val.isEmpty()) {
             addCarModelYear.setError("Field Cannot be Empty");
             return false;
         }else{
             addCarModelYear.setError(null);
-            addCarModelYear.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateBodyType(){
-        String val = addCarBodyType.getEditText().getText().toString();
+        String val = addCarBodyType.getText().toString();
 
         if(val.isEmpty()) {
             addCarBodyType.setError("Field Cannot be Empty");
             return false;
         }else{
             addCarBodyType.setError(null);
-            addCarBodyType.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateTransmission(){
-        String val = addCarTransmission.getEditText().getText().toString();
+        String val = addCarTransmission.getText().toString();
 
         if(val.isEmpty()) {
             addCarTransmission.setError("Field Cannot be Empty");
             return false;
         }else{
             addCarTransmission.setError(null);
-            addCarTransmission.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateEngineCapacity(){
-        String val = addCarEngCapacity.getEditText().getText().toString();
+        String val = addCarEngCapacity.getText().toString();
 
         if(val.isEmpty()) {
             addCarEngCapacity.setError("Field Cannot be Empty");
             return false;
         }else{
             addCarEngCapacity.setError(null);
-            addCarEngCapacity.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateMileage(){
-        String val = addCarMilage.getEditText().getText().toString();
+        String val = addCarMilage.getText().toString();
 
         if(val.isEmpty()) {
             addCarMilage.setError("Field Cannot be Empty");
             return false;
         }else{
             addCarMilage.setError(null);
-            addCarMilage.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateDescription(){
-        String val = addCarDesc.getEditText().getText().toString();
+        String val = addCarDesc.getText().toString();
 
         if(val.isEmpty()) {
             addCarDesc.setError("Field Cannot be Empty");
@@ -216,25 +211,47 @@ public class AddCar extends AppCompatActivity {
             return false;
         }else{
             addCarDesc.setError(null);
-            addCarDesc.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validatePrice(){
-        String val = addCarPrice.getEditText().getText().toString();
+        String val = addCarPrice.getText().toString();
 
         if(val.isEmpty()) {
             addCarPrice.setError("Field Cannot be Empty");
             return false;
         }else{
             addCarPrice.setError(null);
-            addCarPrice.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+    private boolean validateFuelCity(){
+        String val = addCarFuelCity.getText().toString();
+
+        if(val.isEmpty()) {
+            addCarFuelCity.setError("Field Cannot be Empty");
+            return false;
+        }else{
+            addCarFuelCity.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateFuelHighway(){
+        String val = addCarFuelHighway.getText().toString();
+
+        if(val.isEmpty()) {
+            addCarFuelHighway.setError("Field Cannot be Empty");
+            return false;
+        }else{
+            addCarFuelHighway.setError(null);
             return true;
         }
     }
 
     public void uploadAddCar(View view){
-        if(!validateTopic() | !validateBrand() | !validateModel() | !validateModelYear() | !validateBodyType() | !validateTransmission() | !validateEngineCapacity() | !validateMileage() | !validateDescription() | !validatePrice()){
+        if(!validateTopic() | !validateBrand() | !validateModel() | !validateModelYear() | !validateBodyType() | !validateTransmission() | !validateEngineCapacity() | !validateMileage() | !validateDescription() | !validatePrice() |!validateFuelCity() | !validateFuelHighway()){
             return;
         }else{
             addCarDetails();
@@ -246,16 +263,19 @@ public class AddCar extends AppCompatActivity {
                 radioButton = findViewById(radioID);
 
                 final String radioBtnValue = radioButton.getText().toString();
-                final String add_car_topic = addCarTopic.getEditText().getText().toString();
-                final String add_car_brand = addCarBrand.getEditText().getText().toString();
-                final String add_car_model = addCarModel.getEditText().getText().toString();
-                final String add_car_model_year = addCarModelYear.getEditText().getText().toString();
-                final String add_car_body_type = addCarBodyType.getEditText().getText().toString();
-                final String add_car_transmission = addCarTransmission.getEditText().getText().toString();
-                final String add_car_engine_capacity = addCarEngCapacity.getEditText().getText().toString();
-                final String add_car_mileage = addCarMilage.getEditText().getText().toString();
-                final String add_car_description = addCarDesc.getEditText().getText().toString();
-                final String add_car_price = addCarPrice.getEditText().getText().toString();
+                final String add_car_topic = addCarTopic.getText().toString();
+                final String add_car_brand = addCarBrand.getText().toString();
+                final String add_car_model = addCarModel.getText().toString();
+                final String add_car_model_year = addCarModelYear.getText().toString();
+                final String add_car_body_type = addCarBodyType.getText().toString();
+                final String add_car_transmission = addCarTransmission.getText().toString();
+                final String add_car_engine_capacity = addCarEngCapacity.getText().toString();
+                final String add_car_mileage = addCarMilage.getText().toString();
+                final String add_car_description = addCarDesc.getText().toString();
+                final String add_car_price = addCarPrice.getText().toString();
+                final String fuel_Consumption_City = addCarFuelCity.getText().toString();
+                final String fuel_Consumption_Highway = addCarFuelHighway.getText().toString();
+
 
                 if(isImageAdded!=false){
 
@@ -282,6 +302,8 @@ public class AddCar extends AppCompatActivity {
                                     hashMap.put("CarDescription",add_car_description);
                                     hashMap.put("CarCondition",radioBtnValue);
                                     hashMap.put("CarPrice",add_car_price);
+                                    hashMap.put("FuelCity",fuel_Consumption_City);
+                                    hashMap.put("FuelHighway",fuel_Consumption_Highway);
                                     hashMap.put("ImageURL",uri.toString());
 
                                     dataReference.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {

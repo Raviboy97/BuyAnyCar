@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -35,7 +35,7 @@ public class AddPromotion extends AppCompatActivity {
     TextView textViewProgress;
     ProgressBar progressBar;
     Button addPromotionSave;
-    TextInputLayout addPromotionTopic,addPromotionDesc,addPromotionPrice;
+    EditText addPromotionTopic,addPromotionDesc,addPromotionPrice;
     Uri imageUri;
     boolean isImageAdded = false;
 
@@ -72,7 +72,7 @@ public class AddPromotion extends AppCompatActivity {
     }
 
     private boolean validateTopic(){
-        String val = addPromotionTopic.getEditText().getText().toString();
+        String val = addPromotionTopic.getText().toString();
 
         if(val.isEmpty()) {
             addPromotionTopic.setError("Field Cannot be Empty");
@@ -82,12 +82,11 @@ public class AddPromotion extends AppCompatActivity {
             return false;
         }else{
             addPromotionTopic.setError(null);
-            addPromotionTopic.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateDescription(){
-        String val = addPromotionDesc.getEditText().getText().toString();
+        String val = addPromotionDesc.getText().toString();
 
         if(val.isEmpty()) {
             addPromotionDesc.setError("Field Cannot be Empty");
@@ -97,19 +96,17 @@ public class AddPromotion extends AppCompatActivity {
             return false;
         }else{
             addPromotionDesc.setError(null);
-            addPromotionDesc.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validatePrice(){
-        String val = addPromotionPrice.getEditText().getText().toString();
+        String val = addPromotionPrice.getText().toString();
 
         if(val.isEmpty()) {
             addPromotionPrice.setError("Field Cannot be Empty");
             return false;
         }else{
             addPromotionPrice.setError(null);
-            addPromotionPrice.setErrorEnabled(false);
             return true;
         }
     }
@@ -135,9 +132,9 @@ public class AddPromotion extends AppCompatActivity {
 
     private void addPromotionDetails(){
 
-        final String add_promotion_topic = addPromotionTopic.getEditText().getText().toString();
-        final String add_promotion_description = addPromotionDesc.getEditText().getText().toString();
-        final String add_promotion_price = addPromotionPrice.getEditText().getText().toString();
+        final String add_promotion_topic = addPromotionTopic.getText().toString();
+        final String add_promotion_description = addPromotionDesc.getText().toString();
+        final String add_promotion_price = addPromotionPrice.getText().toString();
 
 
         if(isImageAdded!=false){

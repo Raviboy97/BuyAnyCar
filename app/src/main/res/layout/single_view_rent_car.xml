@@ -27,7 +27,7 @@
                 app:cardElevation="10dp">
 
                 <ImageView
-                    android:id="@+id/buyCarImage"
+                    android:id="@+id/rentCarImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:gravity="center">
             <TextView
-                android:id="@+id/buyCartitle"
+                android:id="@+id/rentCartitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/buyCarModelDes"
+                android:id="@+id/rentCarModelDes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -85,7 +85,7 @@
             android:gravity="left">
 
             <TextView
-                android:id="@+id/buyCarModelYearDes"
+                android:id="@+id/rentCarModelYearDes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -94,32 +94,16 @@
                 android:textAlignment="gravity" />
         </LinearLayout>
 
+
         <LinearLayout
-            android:id="@+id/carCondiationLayout"
+            android:id="@+id/carTranmissionLayout"
             android:layout_below="@id/carModeYaerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left">
 
             <TextView
-                android:id="@+id/buyCarConditionDes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:text="Condition: Used"
-                android:textAlignment="gravity" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/carTranmissionLayout"
-            android:layout_below="@id/carCondiationLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left">
-
-            <TextView
-                android:id="@+id/buyCarTransmissionDes"
+                android:id="@+id/rentCarTransmissionDes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -139,7 +123,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/buyCarPriceDesc"
+                android:id="@+id/rentCarPriceDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"

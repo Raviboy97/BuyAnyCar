@@ -2,12 +2,12 @@ package com.example.myapplication.Model;
 
 public class BuyCarModel {
 
-    private String CarBodyType,CarBrand,CarCondition,CarDescription,CarEngineCapacity,CarMileage,CarModel,CarModelYear,CarPrice,CarTopic,CarTransmission,ImageURL;
+    private String CarBodyType,CarBrand,CarCondition,CarDescription,CarEngineCapacity,CarMileage,CarModel,CarModelYear,CarPrice,CarTopic,CarTransmission,FuelCity,FuelHighway,ImageURL;
 
     public BuyCarModel() {
     }
 
-    public BuyCarModel(String carBodyType, String carBrand, String carCondition, String carDescription, String carEngineCapacity, String carMileage, String carModel, String carModelYear,String carPrice, String carTopic, String carTransmission, String imageURL) {
+    public BuyCarModel(String carBodyType, String carBrand, String carCondition, String carDescription, String carEngineCapacity, String carMileage, String carModel, String carModelYear,String carPrice, String carTopic, String carTransmission,String fuelCity,String fuelHighway, String imageURL) {
         CarBodyType = carBodyType;
         CarBrand = carBrand;
         CarCondition = carCondition;
@@ -19,8 +19,26 @@ public class BuyCarModel {
         CarPrice = carPrice;
         CarTopic = carTopic;
         CarTransmission = carTransmission;
+        FuelCity = fuelCity;
+        FuelHighway = fuelHighway;
         ImageURL = imageURL;
 
+    }
+
+    public String getFuelCity() {
+        return FuelCity;
+    }
+
+    public void setFuelCity(String fuelCity) {
+        FuelCity = fuelCity;
+    }
+
+    public String getFuelHighway() {
+        return FuelHighway;
+    }
+
+    public void setFuelHighway(String fuelHighway) {
+        FuelHighway = fuelHighway;
     }
 
     public String getCarBodyType() {

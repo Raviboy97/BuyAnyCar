@@ -13,6 +13,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView imageView;
     public TextView bCarTitle,bCarModel,bCarModelYear,bCarCondition,bCarTransmission,bCarPrice;
+    public View v;
 
 
     public MyViewHolder(@NonNull View itemView) {
@@ -25,7 +26,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         bCarCondition = itemView.findViewById(R.id.buyCarConditionDes);
         bCarTransmission = itemView.findViewById(R.id.buyCarTransmissionDes);
         bCarPrice = itemView.findViewById(R.id.buyCarPriceDesc);
-
+        v = itemView;
 
 
     }

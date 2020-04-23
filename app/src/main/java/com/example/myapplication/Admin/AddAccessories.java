@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -19,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -39,7 +39,7 @@ public class AddAccessories extends AppCompatActivity {
     Button addAccessoriesSave;
     RadioGroup radioGroup;
     RadioButton radioButton;
-    TextInputLayout addAccessoriesTopic,addAccessoriesBrand,addAccessoriesModel,addAccessoriesDesc,addAccessoriesPrice;
+    EditText addAccessoriesTopic,addAccessoriesBrand,addAccessoriesModel,addAccessoriesDesc,addAccessoriesPrice;
     Uri imageUri;
     boolean isImageAdded = false;
 
@@ -96,7 +96,7 @@ public class AddAccessories extends AppCompatActivity {
 
 
     private boolean validateTopic(){
-        String val = addAccessoriesTopic.getEditText().getText().toString();
+        String val = addAccessoriesTopic.getText().toString();
 
         if(val.isEmpty()) {
             addAccessoriesTopic.setError("Field Cannot be Empty");
@@ -106,36 +106,33 @@ public class AddAccessories extends AppCompatActivity {
             return false;
         }else{
             addAccessoriesTopic.setError(null);
-            addAccessoriesTopic.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateBrand(){
-        String val = addAccessoriesBrand.getEditText().getText().toString();
+        String val = addAccessoriesBrand.getText().toString();
 
         if(val.isEmpty()) {
             addAccessoriesBrand.setError("Field Cannot be Empty");
             return false;
         }else{
             addAccessoriesBrand.setError(null);
-            addAccessoriesBrand.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateModel(){
-        String val = addAccessoriesModel.getEditText().getText().toString();
+        String val = addAccessoriesModel.getText().toString();
 
         if(val.isEmpty()) {
             addAccessoriesModel.setError("Field Cannot be Empty");
             return false;
         }else{
             addAccessoriesModel.setError(null);
-            addAccessoriesModel.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateDescription(){
-        String val = addAccessoriesDesc.getEditText().getText().toString();
+        String val = addAccessoriesDesc.getText().toString();
 
         if(val.isEmpty()) {
             addAccessoriesDesc.setError("Field Cannot be Empty");
@@ -145,19 +142,17 @@ public class AddAccessories extends AppCompatActivity {
             return false;
         }else{
             addAccessoriesDesc.setError(null);
-            addAccessoriesDesc.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validatePrice(){
-        String val = addAccessoriesPrice.getEditText().getText().toString();
+        String val = addAccessoriesPrice.getText().toString();
 
         if(val.isEmpty()) {
             addAccessoriesPrice.setError("Field Cannot be Empty");
             return false;
         }else{
             addAccessoriesPrice.setError(null);
-            addAccessoriesPrice.setErrorEnabled(false);
             return true;
         }
     }
@@ -176,11 +171,11 @@ public class AddAccessories extends AppCompatActivity {
         radioButton = findViewById(radioID);
 
         final String radioBtnValue = radioButton.getText().toString();
-        final String add_accessories_topic = addAccessoriesTopic.getEditText().getText().toString();
-        final String add_accessories_brand = addAccessoriesBrand.getEditText().getText().toString();
-        final String add_accessories_model = addAccessoriesModel.getEditText().getText().toString();
-        final String add_accessories_description = addAccessoriesDesc.getEditText().getText().toString();
-        final String add_accessories_price = addAccessoriesPrice.getEditText().getText().toString();
+        final String add_accessories_topic = addAccessoriesTopic.getText().toString();
+        final String add_accessories_brand = addAccessoriesBrand.getText().toString();
+        final String add_accessories_model = addAccessoriesModel.getText().toString();
+        final String add_accessories_description = addAccessoriesDesc.getText().toString();
+        final String add_accessories_price = addAccessoriesPrice.getText().toString();
 
         if(isImageAdded!=false){
 

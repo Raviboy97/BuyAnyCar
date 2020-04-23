@@ -344,7 +344,7 @@
                             android:layout_below="@id/removerentcarimageView"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Add Rent Car"
+                            android:text="Remove Rent Car"
                             android:textSize="15sp"
                             app:fontFamily="@font/aclonica" />
 

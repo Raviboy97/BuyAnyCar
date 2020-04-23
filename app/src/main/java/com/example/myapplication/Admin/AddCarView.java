@@ -1,4 +1,4 @@
-package com.example.myapplication.Customer;
+package com.example.myapplication.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,12 +20,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.myapplication.Customer.UserProfile;
+import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.Model.BuyCarModel;
 import com.example.myapplication.Model.MyViewHolder;
 import com.example.myapplication.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -33,34 +36,34 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuyCar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class AddCarView extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    SearchView InputBuyCar;
-    RecyclerView BuyCarRecyclerView;
+    SearchView InputAddCar;
+    RecyclerView DeleteCarRecyclerView;
     FirebaseRecyclerOptions<BuyCarModel> options;
     FirebaseRecyclerAdapter<BuyCarModel, MyViewHolder> adapter;
     DatabaseReference DataRef;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buy_car);
+        setContentView(R.layout.activity_add_car_view);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+        drawerLayout = findViewById(R.id.drawer_layout_admin);
+        navigationView = findViewById(R.id.nav_view_admin);
         toolbar = findViewById(R.id.toolbar);
-        InputBuyCar = findViewById(R.id.inputSearch_BuyCar);
-        BuyCarRecyclerView = findViewById(R.id.recyclerViewBuyCar);
-        BuyCarRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        BuyCarRecyclerView.setHasFixedSize(true);
+        InputAddCar = findViewById(R.id.inputSearch_AddCarView);
+        DeleteCarRecyclerView = findViewById(R.id.recyclerViewAddCarView);
+        DeleteCarRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        DeleteCarRecyclerView.setHasFixedSize(true);
         DataRef = FirebaseDatabase.getInstance().getReference().child("Add Cars");
 
-
         setSupportActionBar(toolbar);
+
+        //navigation drawer menu
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -68,6 +71,8 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home);
+
 
         ImageSlider imageSlider = findViewById(R.id.slider);
 
@@ -83,7 +88,46 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch (menuItem.getItemId()) {
+            case R.id.nav_home:
+                break;
+
+            case R.id.nav_profile:
+                Intent intent = new Intent(AddCarView.this, UserProfile.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
+                finish();
+                break;
+            case R.id.nav_share:
+                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
     private void LoadData() {
+
         options = new FirebaseRecyclerOptions.Builder<BuyCarModel>().setQuery(DataRef,BuyCarModel.class).build();
         adapter = new FirebaseRecyclerAdapter<BuyCarModel, MyViewHolder>(options) {
             @Override
@@ -91,14 +135,15 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
                 holder.bCarTitle.setText(model.getCarTopic());
                 holder.bCarModel.setText("Car Model : " + model.getCarModel());
                 holder.bCarModelYear.setText("Model Year : " + model.getCarModelYear());
-                holder.bCarCondition.setText("Car Condition : " + model.getCarCondition());
+                holder.bCarCondition.setText("Car Condition : " +model.getCarCondition());
                 holder.bCarTransmission.setText("Transmission Type : " + model.getCarTransmission());
                 holder.bCarPrice.setText("Price : " + model.getCarPrice());
                 Picasso.get().load(model.getImageURL()).into(holder.imageView);
+
                 holder.v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(BuyCar.this,Car1.class);
+                        Intent intent = new Intent(AddCarView.this, DeleteAddCar.class);
                         intent.putExtra("CarKey",getRef(position).getKey());
                         startActivity(intent);
                     }
@@ -116,40 +161,7 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
             }
         };
         adapter.startListening();
-        BuyCarRecyclerView.setAdapter(adapter);
-    }
+        DeleteCarRecyclerView.setAdapter(adapter);
 
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-
-
-    }
-
-
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-        switch (menuItem.getItemId()) {
-            case R.id.nav_home:
-                break;
-
-            case R.id.nav_profile:
-                Intent intent = new Intent(BuyCar.this, UserProfile.class);
-                startActivity(intent);
-                break;
-
-            case R.id.nav_share:
-                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
     }
 }
-
-

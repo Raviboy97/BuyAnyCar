@@ -7,6 +7,7 @@ import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,7 +20,6 @@ import com.example.myapplication.Admin.AdminDashboard;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,7 +33,7 @@ public class Register extends AppCompatActivity {
     Button calllogin,register;
     ImageView image;
     TextView logoText,logantext;
-    TextInputLayout uname,pass,fullname,mail,mnumber;
+    EditText uname,pass,fullname,mail,mnumber;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
     DatabaseReference databaseReference;
@@ -86,7 +86,7 @@ public class Register extends AppCompatActivity {
 
     //validations
     private Boolean validateUsername(){
-        String val = uname.getEditText().getText().toString();
+        String val = uname.getText().toString();
 
         if(val.isEmpty()) {
             uname.setError("Field Cannot be Empty");
@@ -96,24 +96,22 @@ public class Register extends AppCompatActivity {
             return false;
         }else{
             uname.setError(null);
-            uname.setErrorEnabled(false);
             return true;
         }
     }
     private Boolean validateName(){
-        String val = fullname.getEditText().getText().toString();
+        String val = fullname.getText().toString();
 
         if(val.isEmpty()){
             fullname.setError("Field Cannot be Empty");
             return false;
         }else{
             fullname.setError(null);
-            fullname.setErrorEnabled(false);
             return true;
         }
     }
     private Boolean validateEmail(){
-        String val = mail.getEditText().getText().toString();
+        String val = mail.getText().toString();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
         if(val.isEmpty()) {
@@ -128,7 +126,7 @@ public class Register extends AppCompatActivity {
         }
     }
     private Boolean validateNumber(){
-        String val = mnumber.getEditText().getText().toString();
+        String val = mnumber.getText().toString();
 
         if(val.isEmpty()) {
             mnumber.setError("Field Cannot be Empty");
@@ -142,7 +140,7 @@ public class Register extends AppCompatActivity {
         }
     }
     private Boolean validatePassword(){
-        String val = pass.getEditText().getText().toString();
+        String val = pass.getText().toString();
         String passwordmatch = "^"+
                 "(?=.*[0-9])"+ //at least one digit
                 "(?=.*[a-z])"+ //at least one lower case letter
@@ -171,11 +169,11 @@ public class Register extends AppCompatActivity {
             return;
         }else{
 
-            final String fname = fullname.getEditText().getText().toString();
-            final String username = uname.getEditText().getText().toString();
-            final String email = mail.getEditText().getText().toString();
-            final String phoneNo = mnumber.getEditText().getText().toString();
-            final String password = pass.getEditText().getText().toString();
+            final String fname = fullname.getText().toString();
+            final String username = uname.getText().toString();
+            final String email = mail.getText().toString();
+            final String phoneNo = mnumber.getText().toString();
+            final String password = pass.getText().toString();
             final String role = "Customer";
 
             progressBar.setVisibility(View.VISIBLE);

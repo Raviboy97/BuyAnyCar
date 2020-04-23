@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -34,7 +34,7 @@ public class AddRentCar extends AppCompatActivity {
     TextView prograssText;
     ProgressBar progressBar_add_rent_car;
     Button add_rent_car;
-    TextInputLayout addRentCarTopic, addRentCarBrand, addRentCarModel, addRentCarModelYear, addRentCarBodyType, addRentCarTransmission, addRentCarEngCapacity, addRentCarMilage, addRentCarDesc, addRentCarPrice;
+    EditText addRentCarTopic, addRentCarBrand, addRentCarModel, addRentCarModelYear, addRentCarBodyType, addRentCarTransmission, addRentCarEngCapacity, addRentCarMilage, addRentCarDesc, addRentCarPrice,addRentCarFuelCity,addRentCarFuelHighway;
     Uri imageUri;
     boolean isImageAdded = false;
 
@@ -60,6 +60,8 @@ public class AddRentCar extends AppCompatActivity {
         addRentCarMilage = findViewById(R.id.add_rent_car_mileage);
         addRentCarDesc = findViewById(R.id.add_rent_car_descrip);
         addRentCarPrice = findViewById(R.id.add_rent_car_rent_price);
+        addRentCarFuelCity = findViewById(R.id.add_rent_car_fuel_City);
+        addRentCarFuelHighway = findViewById(R.id.add_rent_car_fuel_Highway);
 
         dataReference = FirebaseDatabase.getInstance().getReference().child("Add Rent Cars");
         storageReference = FirebaseStorage.getInstance().getReference().child("AddRentCarImages");
@@ -78,7 +80,7 @@ public class AddRentCar extends AppCompatActivity {
 
 
     private boolean validateTopic(){
-        String val = addRentCarTopic.getEditText().getText().toString();
+        String val = addRentCarTopic.getText().toString();
 
         if(val.isEmpty()) {
             addRentCarTopic.setError("Field Cannot be Empty");
@@ -88,96 +90,88 @@ public class AddRentCar extends AppCompatActivity {
             return false;
         }else{
             addRentCarTopic.setError(null);
-            addRentCarTopic.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateBrand(){
-        String val = addRentCarBrand.getEditText().getText().toString();
+        String val = addRentCarBrand.getText().toString();
 
         if(val.isEmpty()) {
             addRentCarBrand.setError("Field Cannot be Empty");
             return false;
         }else{
             addRentCarBrand.setError(null);
-            addRentCarBrand.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateModel(){
-        String val = addRentCarModel.getEditText().getText().toString();
+        String val = addRentCarModel.getText().toString();
 
         if(val.isEmpty()) {
             addRentCarModel.setError("Field Cannot be Empty");
             return false;
         }else{
             addRentCarModel.setError(null);
-            addRentCarModel.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateModelYear(){
-        String val = addRentCarModelYear.getEditText().getText().toString();
+        String val = addRentCarModelYear.getText().toString();
 
         if(val.isEmpty()) {
             addRentCarModelYear.setError("Field Cannot be Empty");
             return false;
         }else{
             addRentCarModelYear.setError(null);
-            addRentCarModelYear.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateBodyType(){
-        String val = addRentCarBodyType.getEditText().getText().toString();
+        String val = addRentCarBodyType.getText().toString();
 
         if(val.isEmpty()) {
             addRentCarBodyType.setError("Field Cannot be Empty");
             return false;
         }else{
             addRentCarBodyType.setError(null);
-            addRentCarBodyType.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateTransmission(){
-        String val = addRentCarTransmission.getEditText().getText().toString();
+        String val = addRentCarTransmission.getText().toString();
 
         if(val.isEmpty()) {
             addRentCarTransmission.setError("Field Cannot be Empty");
             return false;
         }else{
             addRentCarTransmission.setError(null);
-            addRentCarTransmission.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateEngineCapacity(){
-        String val = addRentCarEngCapacity.getEditText().getText().toString();
+        String val = addRentCarEngCapacity.getText().toString();
 
         if(val.isEmpty()) {
             addRentCarEngCapacity.setError("Field Cannot be Empty");
             return false;
         }else{
             addRentCarEngCapacity.setError(null);
-            addRentCarEngCapacity.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateMileage(){
-        String val = addRentCarMilage.getEditText().getText().toString();
+        String val = addRentCarMilage.getText().toString();
 
         if(val.isEmpty()) {
             addRentCarMilage.setError("Field Cannot be Empty");
             return false;
         }else{
             addRentCarMilage.setError(null);
-            addRentCarMilage.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validateDescription(){
-        String val = addRentCarDesc.getEditText().getText().toString();
+        String val = addRentCarDesc.getText().toString();
 
         if(val.isEmpty()) {
             addRentCarDesc.setError("Field Cannot be Empty");
@@ -187,26 +181,48 @@ public class AddRentCar extends AppCompatActivity {
             return false;
         }else{
             addRentCarDesc.setError(null);
-            addRentCarDesc.setErrorEnabled(false);
             return true;
         }
     }
     private boolean validatePrice(){
-        String val = addRentCarPrice.getEditText().getText().toString();
+        String val = addRentCarPrice.getText().toString();
 
         if(val.isEmpty()) {
             addRentCarPrice.setError("Field Cannot be Empty");
             return false;
         }else{
             addRentCarPrice.setError(null);
-            addRentCarPrice.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+    private boolean validateFuelCity(){
+        String val = addRentCarFuelCity.getText().toString();
+
+        if(val.isEmpty()) {
+            addRentCarFuelCity.setError("Field Cannot be Empty");
+            return false;
+        }else{
+            addRentCarFuelCity.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateFuelHighway(){
+        String val = addRentCarFuelHighway.getText().toString();
+
+        if(val.isEmpty()) {
+            addRentCarFuelHighway.setError("Field Cannot be Empty");
+            return false;
+        }else{
+            addRentCarFuelHighway.setError(null);
             return true;
         }
     }
 
 
     public void uploadAddRentCar(View view){
-        if(!validateTopic() | !validateBrand() | !validateModel() | !validateModelYear() | !validateBodyType() | !validateTransmission() | !validateEngineCapacity() | !validateMileage() | !validateDescription() | !validatePrice()){
+        if(!validateTopic() | !validateBrand() | !validateModel() | !validateModelYear() | !validateBodyType() | !validateTransmission() | !validateEngineCapacity() | !validateMileage() | !validateDescription() | !validatePrice() | !validateFuelCity() | !validateFuelHighway()){
             return;
         }else{
             addRentCarDetails();
@@ -216,16 +232,18 @@ public class AddRentCar extends AppCompatActivity {
 
     private void addRentCarDetails(){
 
-        final String add_rent_car_topic = addRentCarTopic.getEditText().getText().toString();
-        final String add_rent_car_brand = addRentCarBrand.getEditText().getText().toString();
-        final String add_rent_car_model = addRentCarModel.getEditText().getText().toString();
-        final String add_rent_car_model_year = addRentCarModelYear.getEditText().getText().toString();
-        final String add_rent_car_body_type = addRentCarBodyType.getEditText().getText().toString();
-        final String add_rent_car_transmission = addRentCarTransmission.getEditText().getText().toString();
-        final String add_rent_car_engine_capacity = addRentCarEngCapacity.getEditText().getText().toString();
-        final String add_rent_car_mileage = addRentCarMilage.getEditText().getText().toString();
-        final String add_rent_car_description = addRentCarDesc.getEditText().getText().toString();
-        final String add_rent_car_price = addRentCarPrice.getEditText().getText().toString();
+        final String add_rent_car_topic = addRentCarTopic.getText().toString();
+        final String add_rent_car_brand = addRentCarBrand.getText().toString();
+        final String add_rent_car_model = addRentCarModel.getText().toString();
+        final String add_rent_car_model_year = addRentCarModelYear.getText().toString();
+        final String add_rent_car_body_type = addRentCarBodyType.getText().toString();
+        final String add_rent_car_transmission = addRentCarTransmission.getText().toString();
+        final String add_rent_car_engine_capacity = addRentCarEngCapacity.getText().toString();
+        final String add_rent_car_mileage = addRentCarMilage.getText().toString();
+        final String add_rent_car_description = addRentCarDesc.getText().toString();
+        final String add_rent_car_price = addRentCarPrice.getText().toString();
+        final String add_rent_car_fuel_city = addRentCarFuelCity.getText().toString();
+        final String add_rent_car_fuel_Highway = addRentCarFuelHighway.getText().toString();
 
         if(isImageAdded != false){
 
@@ -250,6 +268,9 @@ public class AddRentCar extends AppCompatActivity {
                             hashMap.put("RentCarMileage",add_rent_car_mileage);
                             hashMap.put("RentCarDescription",add_rent_car_description);
                             hashMap.put("RentCarPrice",add_rent_car_price);
+                            hashMap.put("FuelCity",add_rent_car_fuel_city);
+                            hashMap.put("FuelHighway",add_rent_car_fuel_Highway);
+                            hashMap.put("ImageURL",uri.toString());
 
                             dataReference.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
