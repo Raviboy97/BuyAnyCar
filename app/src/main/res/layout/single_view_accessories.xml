@@ -1,6 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/card_view">
+
+        <LinearLayout
+            android:id="@+id/accessoriesImagelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:padding="20dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+                <ImageView
+                    android:id="@+id/accessoriesImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:src="@drawable/benzcar1" />
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/accessoriesTitleLayout"
+            android:layout_below="@id/accessoriesImagelayout"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10sp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/accessoriesTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Mercedes Benz S300 AMG LWB 2014"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/accessoriesBrandLayout"
+            android:layout_below="@id/accessoriesTitleLayout"
+            android:layout_width="match_parent"
+            android:gravity="left"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/accessoriesBrandDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Trim / Edition:AMG LWB"
+                android:textAlignment="gravity" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/accessoriesModelayout"
+            android:layout_below="@id/accessoriesBrandLayout"
+            android:layout_width="match_parent"
+            android:gravity="left"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/accessoriesModelDes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Trim / Edition:AMG LWB"
+                android:textAlignment="gravity" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/accessoriesConditionLayout"
+            android:layout_below="@id/accessoriesModelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left">
+
+            <TextView
+                android:id="@+id/accessoriesConditionDes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Model year:2014"
+                android:textAlignment="gravity" />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:id="@+id/accessoriesPriceLayout"
+            android:layout_below="@id/accessoriesConditionLayout"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/accessoriesPriceDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="LKR 100,000"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

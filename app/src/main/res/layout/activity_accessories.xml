@@ -9,17 +9,18 @@
     tools:context=".Customer.BuyCar"
     tools:openDrawer="start">
 
-<!--    <com.google.android.material.navigation.NavigationView-->
-<!--        android:id="@+id/nav_view"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="start"-->
-<!--        app:headerLayout="@layout/header"-->
-<!--        app:menu="@menu/main_menu" />-->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/main_menu" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,309 +28,82 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                app:title="Promotions"
-                android:layout_width="409dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#00008577"
+                android:background="#fece2f"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:navigationIcon="@drawable/menu" />
+                app:title="Accessories" />
+
 
             <LinearLayout
+                android:id="@+id/linierTop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/accessories_card1"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:padding="20dp"
-                    app:cardBackgroundColor="#fece2f">
+                    app:cardElevation="10dp">
 
-                    <RelativeLayout
+                    <com.denzcoskun.imageslider.ImageSlider
+                        android:id="@+id/slider"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:id="@+id/car1"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:padding="5dp"
-                            android:src="@drawable/carpart" />
-
-                        <TextView
-                            android:id="@+id/title1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_toRightOf="@id/car1"
-                            android:text="asasasasas"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="#000000" />
-
-                        <TextView
-                            android:id="@+id/short_desc1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/title1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car1"
-                            android:text="asasasasasdas"
-                            android:textAlignment="gravity" />
-
-                        <TextView
-                            android:id="@+id/textViewRating1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/short_desc1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car1"
-                            android:background="@color/colorPrimary"
-                            android:fontFamily="@font/baloo"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:text="4.7" />
-
-                        <TextView
-                            android:id="@+id/textViewPrice1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewRating1"
-                            android:layout_toRightOf="@id/car1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:text="LKR 100"
-                            android:textColor="#000000"
-                            android:textStyle="bold" />
+                        android:layout_height="200dp"
+                        app:auto_cycle="true"
+                        app:corner_radius="25"
+                        app:delay="0"
+                        app:error_image="@drawable/image_back"
+                        app:period="2000"
+                        app:placeholder="@drawable/image_back" />
 
 
-                    </RelativeLayout>
 
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
-                <com.google.android.material.card.MaterialCardView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:padding="20dp"
-                    app:cardBackgroundColor="#fece2f">
+                    android:padding="5dp">
 
-                    <RelativeLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp">
+                        app:cardElevation="10dp">
 
-                        <ImageView
-                            android:id="@+id/car2"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:padding="5dp"
-                            android:src="@drawable/carpart" />
+                        <SearchView
+                            android:id="@+id/inputSearch_accessoriesView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:iconifiedByDefault="false"
+                            android:queryHint="Search Car" />
 
-                        <TextView
-                            android:id="@+id/title2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_toRightOf="@id/car2"
-                            android:text="asasasaa"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="#000000" />
-
-                        <TextView
-                            android:id="@+id/short_desc2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/title2"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car2"
-                            android:text="sasasdasdsa"
-                            android:textAlignment="gravity" />
-
-                        <TextView
-                            android:id="@+id/textViewRating2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/short_desc2"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car2"
-                            android:background="@color/colorPrimary"
-                            android:fontFamily="@font/baloo"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:text="4.7" />
-
-                        <TextView
-                            android:id="@+id/textViewPrice2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewRating2"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:text="LKR 1,000"
-                            android:layout_toRightOf="@id/car2"
-                            android:textColor="#000000"
-                            android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
 
 
-                    </RelativeLayout>
 
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:padding="20dp"
-                    app:cardBackgroundColor="#fece2f">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:id="@+id/car3"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:padding="5dp"
-                            android:src="@drawable/carpart" />
-
-                        <TextView
-                            android:id="@+id/title3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_toRightOf="@id/car3"
-                            android:text="asdasdda"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="#000000" />
-
-                        <TextView
-                            android:id="@+id/short_desc3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/title3"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car3"
-                            android:text="asasasas"
-                            android:textAlignment="gravity" />
-
-                        <TextView
-                            android:id="@+id/textViewRating3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/short_desc3"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car3"
-                            android:background="@color/colorPrimary"
-                            android:fontFamily="@font/baloo"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:text="4.7" />
-
-                        <TextView
-                            android:id="@+id/textViewPrice3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewRating3"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:text="LKR 1,000"
-                            android:layout_toRightOf="@id/car3"
-                            android:textColor="#000000"
-                            android:textStyle="bold" />
-
-
-                    </RelativeLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:padding="20dp"
-                    app:cardBackgroundColor="#fece2f">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:id="@+id/car4"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:padding="5dp"
-                            android:src="@drawable/carpart" />
-
-                        <TextView
-                            android:id="@+id/title4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_toRightOf="@id/car4"
-                            android:text="sadasda"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="#000000" />
-
-                        <TextView
-                            android:id="@+id/short_desc4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/title4"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car4"
-                            android:text="asassaasas"
-                            android:textAlignment="gravity" />
-
-                        <TextView
-                            android:id="@+id/textViewRating4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/short_desc4"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_toRightOf="@id/car4"
-                            android:background="@color/colorPrimary"
-                            android:fontFamily="@font/baloo"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:text="4.7" />
-
-                        <TextView
-                            android:id="@+id/textViewPrice4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewRating4"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:text="LKR 100"
-                            android:textColor="#000000"
-                            android:layout_toRightOf="@id/car4"
-                            android:textStyle="bold" />
-
-
-                    </RelativeLayout>
-
-                </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
 
             </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10sp"
+                app:layout_constraintTop_toBottomOf="@+id/linierTop">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recyclerViewAccessoriesView"/>
+
+            </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

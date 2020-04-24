@@ -2,28 +2,48 @@ package com.example.myapplication.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Promotion1;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.myapplication.Model.PromotionModel;
+import com.example.myapplication.Model.PromotionViewHolder;
 import com.example.myapplication.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Promotions extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    CardView cardpromo;
+    SearchView InputPromotion;
+    RecyclerView PromotionRecyclerView;
+    FirebaseRecyclerOptions<PromotionModel> options;
+    FirebaseRecyclerAdapter<PromotionModel, PromotionViewHolder> adapter;
+    DatabaseReference DataRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +54,24 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-        cardpromo = findViewById(R.id.promo_card1);
+        InputPromotion = findViewById(R.id.inputSearch_promotionView);
+        PromotionRecyclerView = findViewById(R.id.recyclerViewPromotionView);
+        PromotionRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        PromotionRecyclerView.setHasFixedSize(true);
+        DataRef = FirebaseDatabase.getInstance().getReference().child("Add Promotions");
+
+        ImageSlider imageSlider = findViewById(R.id.slider);
+
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.benzcar1,"Buy Brand New Cars"));
+        slideModels.add(new SlideModel(R.drawable.benzcar2,"Buy Used Cars"));
+        slideModels.add(new SlideModel(R.drawable.benzcar3,"Various Collection"));
+
+        imageSlider.setImageList(slideModels,true);
+
+
+        LoadData();
+
 
         setSupportActionBar(toolbar);
 
@@ -45,13 +82,27 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        cardpromo.setOnClickListener(new View.OnClickListener() {
+
+    }
+
+    private void LoadData() {
+        options = new FirebaseRecyclerOptions.Builder<PromotionModel>().setQuery(DataRef,PromotionModel.class).build();
+        adapter = new FirebaseRecyclerAdapter<PromotionModel, PromotionViewHolder>(options) {
             @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(Promotions.this, Promotion1.class);
-                startActivity(intent);
+            protected void onBindViewHolder(@NonNull PromotionViewHolder holder, int position, @NonNull PromotionModel model) {
+                    holder.promotionTitile.setText(model.getPromotionTopic());
+                    Picasso.get().load(model.getImageURL()).into(holder.imageView);
             }
-        });
+
+            @NonNull
+            @Override
+            public PromotionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_view_promotions,parent,false);
+                return new PromotionViewHolder(v);
+            }
+        };
+        adapter.startListening();
+        PromotionRecyclerView.setAdapter(adapter);
     }
 
     @Override
