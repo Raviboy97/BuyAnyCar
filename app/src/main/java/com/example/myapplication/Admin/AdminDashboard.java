@@ -105,6 +105,20 @@ public class AdminDashboard extends AppCompatActivity implements NavigationView.
                 startActivity(new Intent(AdminDashboard.this,AddRentCarView.class));
             }
         });
+
+        delete_accessories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminDashboard.this,AddAccessoriesView.class));
+            }
+        });
+
+        delete_promotion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminDashboard.this,AddPromotionView.class));
+            }
+        });
     }
 
     @Override

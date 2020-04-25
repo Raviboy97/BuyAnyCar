@@ -2,7 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/drawer_layout_admin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -10,12 +10,12 @@
     tools:openDrawer="start">
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/nav_view_admin"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu" />
+        app:menu="@menu/main_menu_admin" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="Accessories" />
+                app:title="Delete Accessories" />
 
 
             <LinearLayout
@@ -54,7 +54,7 @@
                     app:cardElevation="10dp">
 
                     <ImageView
-                        android:id="@+id/accessoriesImageView"
+                        android:id="@+id/accessoriesDeleteImageView"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:src="@drawable/carpart" />
@@ -81,7 +81,7 @@
                             android:padding="15dp">
 
                             <TextView
-                                android:id="@+id/accessories_title_label"
+                                android:id="@+id/accessories_delete_title_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
@@ -93,40 +93,40 @@
                                 android:layout_marginBottom="5dp"/>
 
                             <TextView
-                                android:id="@+id/accessories_Brand_label"
+                                android:id="@+id/accessories_delete_Brand_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/accessories_title_label"
+                                android:layout_below="@id/accessories_delete_title_label"
                                 android:includeFontPadding="false"
                                 android:text="LKR 1,000"
                                 android:textColor="#000000"
                                 android:layout_marginBottom="5dp"/>
 
                             <TextView
-                                android:id="@+id/accessories_model_label"
+                                android:id="@+id/accessories_delete_model_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/accessories_Brand_label"
+                                android:layout_below="@id/accessories_delete_Brand_label"
                                 android:includeFontPadding="false"
                                 android:text="LKR 1,000"
                                 android:textColor="#000000"
                                 android:layout_marginBottom="5dp"/>
 
                             <TextView
-                                android:id="@+id/accessories_condition_label"
+                                android:id="@+id/accessories_delete_condition_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/accessories_model_label"
+                                android:layout_below="@id/accessories_delete_model_label"
                                 android:includeFontPadding="false"
                                 android:text="LKR 1,000"
                                 android:textColor="#000000"
                                 android:layout_marginBottom="5dp"/>
 
                             <TextView
-                                android:id="@+id/accessories_price_label"
+                                android:id="@+id/accessories_delete_price_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/accessories_condition_label"
+                                android:layout_below="@id/accessories_delete_condition_label"
                                 android:includeFontPadding="false"
                                 android:text="LKR 1,000"
                                 android:textColor="#000000"
@@ -162,7 +162,7 @@
                             android:textSize="20dp" />
 
                         <TextView
-                            android:id="@+id/accessories_textView_Desc"
+                            android:id="@+id/accessories_delete_textView_Desc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="asasasasasasasassssssssssssssssssssddadadadadadad"
@@ -180,14 +180,14 @@
                     android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/accessoriesBuy"
+                        android:id="@+id/accessoriesDeleteBtn"
                         android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:background="#000000"
                         android:textColor="#ffffff"
-                        android:text="BUY"
+                        android:text="DELETE"
                         android:layout_marginRight="20dp"
                         android:padding="5dp"/>
                 </LinearLayout>

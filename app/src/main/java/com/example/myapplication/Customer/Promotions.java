@@ -69,10 +69,6 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
 
         imageSlider.setImageList(slideModels,true);
 
-
-        LoadData();
-
-
         setSupportActionBar(toolbar);
 
         navigationView.bringToFront();
@@ -82,6 +78,7 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
 
         navigationView.setNavigationItemSelectedListener(this);
 
+        LoadData();
 
     }
 
@@ -89,9 +86,17 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
         options = new FirebaseRecyclerOptions.Builder<PromotionModel>().setQuery(DataRef,PromotionModel.class).build();
         adapter = new FirebaseRecyclerAdapter<PromotionModel, PromotionViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull PromotionViewHolder holder, int position, @NonNull PromotionModel model) {
+            protected void onBindViewHolder(@NonNull PromotionViewHolder holder, final int position, @NonNull PromotionModel model) {
                     holder.promotionTitile.setText(model.getPromotionTopic());
                     Picasso.get().load(model.getImageURL()).into(holder.imageView);
+                    holder.v.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(Promotions.this,Promotion1.class);
+                            intent.putExtra("PromotionKey",getRef(position).getKey());
+                            startActivity(intent);
+                        }
+                    });
             }
 
             @NonNull

@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Admin.DeleteRentCar"></activity>
+        <activity android:name=".Admin.DeletePromotion"></activity>
+        <activity android:name=".Admin.DeleteAccessories" />
+        <activity android:name=".Admin.AddAccessoriesView" />
+        <activity android:name=".Admin.AddPromotionView" />
+        <activity android:name=".Admin.DeleteRentCar" />
         <activity android:name=".Admin.AddRentCarView" />
         <activity android:name=".Customer.ViewRentCar" />
         <activity android:name=".Admin.DeleteAddCar" />
@@ -21,8 +25,8 @@
         <activity android:name=".Admin.AddRentCar" />
         <activity android:name=".Admin.AddCar" />
         <activity android:name=".Admin.AdminDashboard" />
-        <activity android:name=".Promotion1" />
-        <activity android:name=".Accessories1" />
+        <activity android:name=".Customer.Promotion1" />
+        <activity android:name=".Customer.Accessories1" />
         <activity android:name=".Customer.Car1" />
         <activity android:name=".Customer.History" />
         <activity android:name=".Customer.Promotions" />

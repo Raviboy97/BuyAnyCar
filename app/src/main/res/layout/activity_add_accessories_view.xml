@@ -36,7 +36,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="Delete Rent Car" />
+                app:title="Delete Accessories" />
 
 
             <LinearLayout
@@ -79,7 +79,7 @@
                         app:cardElevation="10dp">
 
                         <SearchView
-                            android:id="@+id/inputSearch_AddRentCarView"
+                            android:id="@+id/inputSearch_Add_accessoriesView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:iconifiedByDefault="false"
@@ -101,7 +101,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recyclerViewAddRentCarView"/>
+                    android:id="@+id/recyclerViewAddAccessoriesView"/>
 
             </RelativeLayout>
 

@@ -9,13 +9,13 @@
     tools:context=".Customer.BuyCar"
     tools:openDrawer="start">
 
-    <!--    <com.google.android.material.navigation.NavigationView-->
-    <!--        android:id="@+id/nav_view"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_gravity="start"-->
-    <!--        app:headerLayout="@layout/header"-->
-    <!--        app:menu="@menu/main_menu" />-->
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/header"
+            app:menu="@menu/main_menu" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_width="409dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fece2f"
                 android:minHeight="?attr/actionBarSize"
@@ -45,20 +45,21 @@
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:padding="20dp"
-                    app:cardCornerRadius="6dp">
+                    app:cardCornerRadius="6dp"
+                    app:cardElevation="10dp">
 
                     <ImageView
+                        android:id="@+id/promotionImage"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:src="@drawable/christmas" />
 
-
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
 
                 <LinearLayout
@@ -67,7 +68,7 @@
                     android:padding="10dp"
                     android:orientation="vertical">
 
-                    <com.google.android.material.card.MaterialCardView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -80,7 +81,7 @@
                             android:padding="15dp">
 
                             <TextView
-                                android:id="@+id/total_buy_label"
+                                android:id="@+id/textViewPromotionTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
@@ -91,9 +92,10 @@
                                 android:textSize="20sp" />
 
                             <TextView
+                                android:id="@+id/textViewPromotionDiscount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/total_buy_label"
+                                android:layout_below="@id/textViewPromotionTitle"
                                 android:includeFontPadding="false"
                                 android:paddingTop="5dp"
                                 android:text="10% for Every car rent"
@@ -102,7 +104,8 @@
 
                         </RelativeLayout>
 
-                    </com.google.android.material.card.MaterialCardView>
+                    </androidx.cardview.widget.CardView>
+
 
 
                 </LinearLayout>
@@ -115,10 +118,11 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.google.android.material.card.MaterialCardView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="73dp"
-                        android:padding="20dp">
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        app:cardElevation="10dp">
 
                         <TextView
                             android:id="@+id/car_desc"
@@ -130,31 +134,16 @@
                             android:textSize="20dp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/textViewPromotionDescription"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="asasasasasasasassssssssssssssssssssddadadadadadad"
                             android:layout_marginTop="30dp"/>
 
 
-                    </com.google.android.material.card.MaterialCardView>
+                    </androidx.cardview.widget.CardView>
 
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:background="#000000"
-                        android:textColor="#ffffff"
-                        android:text="BACK"
-                        android:padding="5dp"/>
                 </LinearLayout>
 
             </LinearLayout>

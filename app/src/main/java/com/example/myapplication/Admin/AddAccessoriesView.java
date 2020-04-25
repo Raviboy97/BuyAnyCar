@@ -1,4 +1,4 @@
-package com.example.myapplication.Customer;
+package com.example.myapplication.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,12 +20,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.myapplication.Customer.UserProfile;
+import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.Model.AccessoriesModel;
 import com.example.myapplication.Model.AccessoriesViewHolder;
 import com.example.myapplication.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -33,7 +36,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Accessories extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class AddAccessoriesView extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -44,21 +47,19 @@ public class Accessories extends AppCompatActivity implements NavigationView.OnN
     FirebaseRecyclerAdapter<AccessoriesModel, AccessoriesViewHolder> adapter;
     DatabaseReference DataRef;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_accessories);
+        setContentView(R.layout.activity_add_accessories_view);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+        drawerLayout = findViewById(R.id.drawer_layout_admin);
+        navigationView = findViewById(R.id.nav_view_admin);
         toolbar = findViewById(R.id.toolbar);
-        InputAccessories = findViewById(R.id.inputSearch_accessoriesView);
-        AccessoriesRecyclerView = findViewById(R.id.recyclerViewAccessoriesView);
+        InputAccessories = findViewById(R.id.inputSearch_Add_accessoriesView);
+        AccessoriesRecyclerView = findViewById(R.id.recyclerViewAddAccessoriesView);
         AccessoriesRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         AccessoriesRecyclerView.setHasFixedSize(true);
         DataRef = FirebaseDatabase.getInstance().getReference().child("Add Accessories");
-
 
         ImageSlider imageSlider = findViewById(R.id.slider);
 
@@ -80,9 +81,11 @@ public class Accessories extends AppCompatActivity implements NavigationView.OnN
         navigationView.setNavigationItemSelectedListener(this);
         LoadData();
 
+
     }
 
     private void LoadData() {
+
         options = new FirebaseRecyclerOptions.Builder<AccessoriesModel>().setQuery(DataRef,AccessoriesModel.class).build();
         adapter = new FirebaseRecyclerAdapter<AccessoriesModel, AccessoriesViewHolder>(options) {
             @Override
@@ -96,7 +99,7 @@ public class Accessories extends AppCompatActivity implements NavigationView.OnN
                 holder.v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Accessories.this,Accessories1.class);
+                        Intent intent = new Intent(AddAccessoriesView.this, DeleteAccessories.class);
                         intent.putExtra("AccessoriesKey",getRef(position).getKey());
                         startActivity(intent);
                     }
@@ -113,6 +116,7 @@ public class Accessories extends AppCompatActivity implements NavigationView.OnN
         };
         adapter.startListening();
         AccessoriesRecyclerView.setAdapter(adapter);
+
     }
 
     @Override
@@ -126,7 +130,7 @@ public class Accessories extends AppCompatActivity implements NavigationView.OnN
 
     }
 
-
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
@@ -134,12 +138,18 @@ public class Accessories extends AppCompatActivity implements NavigationView.OnN
                 break;
 
             case R.id.nav_profile:
-                Intent intent = new Intent(Accessories.this, UserProfile.class);
+                Intent intent = new Intent(AddAccessoriesView.this, UserProfile.class);
                 startActivity(intent);
                 break;
 
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                Toast.makeText(this, "Successfully Logged Out!", Toast.LENGTH_SHORT).show();
+                finish();
+                break;
             case R.id.nav_share:
-                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
                 break;
         }
 
