@@ -1,9 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin.AdminUserProfile">
+    tools:context=".Customer.UserProfile">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#fece2f"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/user" />
+
+            <TextView
+                android:id="@+id/admin_f_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/profile_image"
+                android:includeFontPadding="false"
+                android:text="Full Name"
+                android:textSize="20sp"
+                app:fontFamily="@font/bungee" />
+
+            <TextView
+                android:id="@+id/admin_u_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/admin_f_name"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/profile_image"
+                android:includeFontPadding="false"
+                android:text="User Name"
+                android:textSize="15sp"
+                app:fontFamily="@font/autour_one" />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <EditText
+                android:id="@+id/admin_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Full Name"
+                android:drawableLeft="@drawable/profile_icon"
+                android:drawablePadding="10dp"
+                android:text="Full Name"/>
+
+            <EditText
+                android:id="@+id/admin_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Full Name"
+                android:drawableLeft="@drawable/profile_icon"
+                android:drawablePadding="10dp"
+                android:text="User Name"/>
+
+            <EditText
+                android:id="@+id/admin_email_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="E-mail"
+                android:drawableLeft="@drawable/email_icon"
+                android:drawablePadding="10dp"
+                android:text="E-mail"/>
+
+
+            <EditText
+                android:id="@+id/admin_mobile_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Mobile Number"
+                android:drawableLeft="@drawable/mobile_icon"
+                android:drawablePadding="10dp"
+                android:text="Mobile Number"/>
+
+
+            <Button
+                android:id="@+id/adminUpdate_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:fontFamily="@font/baloo"
+                android:text="Update"
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+
+            <ProgressBar
+                android:id="@+id/admin_update_prograssbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

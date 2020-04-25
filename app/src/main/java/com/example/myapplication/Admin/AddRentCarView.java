@@ -2,11 +2,13 @@ package com.example.myapplication.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,6 +31,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -39,7 +42,7 @@ public class AddRentCarView extends AppCompatActivity implements NavigationView.
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    SearchView InputRentCar;
+    EditText InputRentCar;
     RecyclerView DeleteRentCarRecyclerView;
     FirebaseRecyclerOptions<RentCarModel> options;
     FirebaseRecyclerAdapter<RentCarModel, RentCarViewHolder> adapter;
@@ -78,11 +81,33 @@ public class AddRentCarView extends AppCompatActivity implements NavigationView.
         imageSlider.setImageList(slideModels,true);
 
 
-        LoadRentCarData();
+        LoadRentCarData("");
+        InputRentCar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.toString() != null){
+                    LoadRentCarData(s.toString());
+                }else{
+                    LoadRentCarData("");
+                }
+            }
+        });
     }
 
-    private void LoadRentCarData() {
-        options = new FirebaseRecyclerOptions.Builder<RentCarModel>().setQuery(DataRef,RentCarModel.class).build();
+    private void LoadRentCarData(String data) {
+
+        Query query = DataRef.orderByChild("RentCarTopic").startAt(data).endAt(data + "\uf8ff");
+        options = new FirebaseRecyclerOptions.Builder<RentCarModel>().setQuery(query,RentCarModel.class).build();
         adapter = new FirebaseRecyclerAdapter<RentCarModel, RentCarViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull RentCarViewHolder holder, final int position, @NonNull RentCarModel model) {

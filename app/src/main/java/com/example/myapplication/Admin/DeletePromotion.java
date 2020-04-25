@@ -3,8 +3,10 @@ package com.example.myapplication.Admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.myapplication.Customer.UserProfile;
 import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +29,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class DeletePromotion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,7 +41,9 @@ public class DeletePromotion extends AppCompatActivity implements NavigationView
     ImageView imageView;
     TextView pTitle,pDiscount,pDescription;
     Button deleteButton;
-    DatabaseReference ref;
+    DatabaseReference ref,Dataref;
+    StorageReference Storageref;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +58,12 @@ public class DeletePromotion extends AppCompatActivity implements NavigationView
         pDiscount = findViewById(R.id.textViewDeletePromotionDiscount);
         pDescription = findViewById(R.id.textViewDeletePromotionDescription);
         deleteButton = findViewById(R.id.promotionDeleteBtn);
+        progressBar = findViewById(R.id.prograss_delete_promotion);
         ref = FirebaseDatabase.getInstance().getReference().child("Add Promotions");
 
         String PromoKey = getIntent().getStringExtra("PromotionKey");
+        Dataref = FirebaseDatabase.getInstance().getReference().child("Add Promotions").child(PromoKey);
+        Storageref = FirebaseStorage.getInstance().getReference().child("AddPromotionImages").child(PromoKey+ "jpg");
         ref.child(PromoKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -91,6 +102,39 @@ public class DeletePromotion extends AppCompatActivity implements NavigationView
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                Dataref.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Storageref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                startActivity(new Intent(DeletePromotion.this,AddPromotionView.class));
+                                Toast.makeText(DeletePromotion.this,"Item Deleted Successfully",Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(DeletePromotion.this,"Error!",Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(DeletePromotion.this,"Error!",Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
+            }
+        });
+
     }
     @Override
     public void onBackPressed() {

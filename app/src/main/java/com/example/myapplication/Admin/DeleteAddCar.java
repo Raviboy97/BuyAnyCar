@@ -3,8 +3,10 @@ package com.example.myapplication.Admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.myapplication.Customer.UserProfile;
 import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +29,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class DeleteAddCar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,7 +41,9 @@ public class DeleteAddCar extends AppCompatActivity implements NavigationView.On
     ImageView imageView;
     TextView carTitle,carPrice,fuelCity,fuelHighway,carBrand,carModel,carBodyType,carCondition,EngineCapacity,carMileage,modelYear,Transmission,Description;
     Button deleteButton;
-    DatabaseReference ref;
+    DatabaseReference ref,Dataref;
+    StorageReference Storageref;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +68,15 @@ public class DeleteAddCar extends AppCompatActivity implements NavigationView.On
         Transmission = findViewById(R.id.textViewTransmission);
         Description = findViewById(R.id.textViewDescription);
         deleteButton = findViewById(R.id.BuyCarDeleteButton);
+        progressBar = findViewById(R.id.prograss_deleteCar);
         ref = FirebaseDatabase.getInstance().getReference().child("Add Cars");
 
+
         String CarKey = getIntent().getStringExtra("CarKey");
+        Dataref = FirebaseDatabase.getInstance().getReference().child("Add Cars").child(CarKey);
+        Storageref = FirebaseStorage.getInstance().getReference().child("AddCarImages").child(CarKey+ "jpg");
+
+
         ref.child(CarKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -127,6 +141,36 @@ public class DeleteAddCar extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                Dataref.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Storageref.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                 if(task.isSuccessful()){
+                                     startActivity(new Intent(DeleteAddCar.this,AddCarView.class));
+                                     Toast.makeText(DeleteAddCar.this,"Item Deleted Successfully",Toast.LENGTH_SHORT).show();
+                                     progressBar.setVisibility(View.GONE);
+                                 }else{
+                                     Toast.makeText(DeleteAddCar.this,"Error",Toast.LENGTH_SHORT).show();
+                                     progressBar.setVisibility(View.GONE);
+                                 }
+                                }
+                            });
+                        }else{
+                            Toast.makeText(DeleteAddCar.this,"Error",Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+            }
+        });
 
     }
 

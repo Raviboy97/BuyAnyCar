@@ -2,11 +2,13 @@ package com.example.myapplication.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,7 +41,7 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    SearchView InputPromotion;
+    EditText InputPromotion;
     RecyclerView PromotionRecyclerView;
     FirebaseRecyclerOptions<PromotionModel> options;
     FirebaseRecyclerAdapter<PromotionModel, PromotionViewHolder> adapter;
@@ -78,12 +81,34 @@ public class Promotions extends AppCompatActivity implements NavigationView.OnNa
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        LoadData();
+        LoadData("");
+        InputPromotion.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.toString() != null){
+                    LoadData(s.toString());
+                }else{
+                    LoadData("");
+                }
+            }
+        });
 
     }
 
-    private void LoadData() {
-        options = new FirebaseRecyclerOptions.Builder<PromotionModel>().setQuery(DataRef,PromotionModel.class).build();
+    private void LoadData(String data) {
+
+        Query query = DataRef.orderByChild("PromotionTopic").startAt(data).endAt(data + "\uf8ff");
+        options = new FirebaseRecyclerOptions.Builder<PromotionModel>().setQuery(query,PromotionModel.class).build();
         adapter = new FirebaseRecyclerAdapter<PromotionModel, PromotionViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull PromotionViewHolder holder, final int position, @NonNull PromotionModel model) {

@@ -77,13 +77,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:cardElevation="10dp">
-
-                        <SearchView
+                        
+                        <EditText
                             android:id="@+id/inputSearch_AddCarView"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:iconifiedByDefault="false"
-                            android:queryHint="Search Car" />
+                            android:layout_height="wrap_content"
+                            android:hint="Search Here"
+                            android:layout_margin="20dp"
+                            android:background="@drawable/input_search"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:drawableRight="@drawable/search_logo"
+                            android:paddingRight="10dp"
+                            android:inputType="text"/>
+
 
                     </androidx.cardview.widget.CardView>
 

@@ -2,11 +2,13 @@ package com.example.myapplication.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,7 +41,7 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    SearchView InputBuyCar;
+    EditText InputBuyCar;
     RecyclerView BuyCarRecyclerView;
     FirebaseRecyclerOptions<BuyCarModel> options;
     FirebaseRecyclerAdapter<BuyCarModel, MyViewHolder> adapter;
@@ -79,12 +82,34 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
         imageSlider.setImageList(slideModels,true);
 
 
-        LoadData();
+        LoadData("");
+        InputBuyCar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.toString() != null){
+                    LoadData(s.toString());
+                }else{
+                    LoadData("");
+                }
+            }
+        });
 
     }
 
-    private void LoadData() {
-        options = new FirebaseRecyclerOptions.Builder<BuyCarModel>().setQuery(DataRef,BuyCarModel.class).build();
+    private void LoadData(String data) {
+
+        Query query = DataRef.orderByChild("CarTopic").startAt(data).endAt(data + "\uf8ff");
+        options = new FirebaseRecyclerOptions.Builder<BuyCarModel>().setQuery(query,BuyCarModel.class).build();
         adapter = new FirebaseRecyclerAdapter<BuyCarModel, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull BuyCarModel model) {

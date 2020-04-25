@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".LoginRegister.Register"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/image_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/companylogo"
+            android:transitionName="logo_image"
+            android:padding="20dp"
+            android:layout_marginLeft="-20dp"/>
+
+        <TextView
+            android:id="@+id/logo_wel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome"
+            android:transitionName="logo_text"
+            android:textSize="40sp"
+            android:fontFamily="@font/bungee"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/slogan_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SignUp As Admin to Start Your new Journey"
+            android:textSize="18sp"
+            android:transitionName="logo_desc"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:cardElevation="10dp">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/admin_fname"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Full Name"
+                        android:onClick="validateName"
+                        android:inputType="text"/>
+
+                    <EditText
+                        android:id="@+id/admin_uname"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="User Name"
+                        android:onClick="validateUsername"
+                        android:transitionName="username_tran"
+                        app:counterMaxLength="15"
+                        android:inputType="text"
+                        android:layout_below="@+id/admin_fname"/>
+
+                    <EditText
+                        android:id="@+id/admin_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="E-mail"
+                        android:onClick="validateEmail"
+                        android:inputType="textEmailAddress"
+                        android:layout_below="@+id/admin_uname"/>
+
+                    <EditText
+                        android:id="@+id/admin_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Mobile Number"
+                        android:onClick="validateNumber"
+                        android:inputType="phone"
+                        android:layout_below="@+id/admin_email"/>
+
+                    <EditText
+                        android:id="@+id/admin_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Password"
+                        android:onClick="validatePassword"
+                        android:transitionName="password_tran"
+                        app:passwordToggleEnabled="true"
+                        android:inputType="textPassword"
+                        android:layout_below="@+id/admin_mobile"/>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/admin_register_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:onClick="registerUser"
+            android:text="REGISTER"
+            android:textColor="#fff"
+            android:transitionName="signin_tran" />
+
+
+
+        <ProgressBar
+            android:id="@+id/admin_register_progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+</ScrollView>

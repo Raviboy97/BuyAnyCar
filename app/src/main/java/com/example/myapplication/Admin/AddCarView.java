@@ -2,11 +2,13 @@ package com.example.myapplication.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +33,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -41,7 +44,7 @@ public class AddCarView extends AppCompatActivity implements NavigationView.OnNa
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    SearchView InputAddCar;
+    EditText InputAddCar;
     RecyclerView DeleteCarRecyclerView;
     FirebaseRecyclerOptions<BuyCarModel> options;
     FirebaseRecyclerAdapter<BuyCarModel, MyViewHolder> adapter;
@@ -84,7 +87,28 @@ public class AddCarView extends AppCompatActivity implements NavigationView.OnNa
         imageSlider.setImageList(slideModels,true);
 
 
-        LoadData();
+        LoadData("");
+        InputAddCar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(s.toString() != null){
+                    LoadData(s.toString());
+                }else{
+                    LoadData("");
+                }
+            }
+        });
 
     }
 
@@ -126,9 +150,11 @@ public class AddCarView extends AppCompatActivity implements NavigationView.OnNa
         return true;
     }
 
-    private void LoadData() {
+    private void LoadData(String data) {
 
-        options = new FirebaseRecyclerOptions.Builder<BuyCarModel>().setQuery(DataRef,BuyCarModel.class).build();
+        Query query = DataRef.orderByChild("CarTopic").startAt(data).endAt(data + "\uf8ff");
+
+        options = new FirebaseRecyclerOptions.Builder<BuyCarModel>().setQuery(query,BuyCarModel.class).build();
         adapter = new FirebaseRecyclerAdapter<BuyCarModel, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull BuyCarModel model) {

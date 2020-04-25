@@ -3,8 +3,10 @@ package com.example.myapplication.Admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,12 +19,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.myapplication.Customer.UserProfile;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class DeleteRentCar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,7 +38,9 @@ public class DeleteRentCar extends AppCompatActivity implements NavigationView.O
     ImageView imageView;
     TextView carTitle,carPrice,fuelCity,fuelHighway,carBrand,carModel,carBodyType,EngineCapacity,carMileage,modelYear,Transmission,Description;
     Button rentButton_dlt;
-    DatabaseReference ref;
+    DatabaseReference ref,Dataref;
+    StorageReference Storageref;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +64,13 @@ public class DeleteRentCar extends AppCompatActivity implements NavigationView.O
         Transmission = findViewById(R.id.textViewDeleteRentCarTransmission);
         Description = findViewById(R.id.textViewDeleteRentCarDescription);
         rentButton_dlt = findViewById(R.id.deleteRentCarButton);
+        progressBar = findViewById(R.id.prograss_delete_rent_Car);
         ref = FirebaseDatabase.getInstance().getReference().child("Add Rent Cars");
 
         String CarKey = getIntent().getStringExtra("CarKey");
+        Dataref = FirebaseDatabase.getInstance().getReference().child("Add Rent Cars").child(CarKey);
+        Storageref = FirebaseStorage.getInstance().getReference().child("AddRentCarImages").child(CarKey+ "jpg");
+
         ref.child(CarKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -112,6 +124,39 @@ public class DeleteRentCar extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        rentButton_dlt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                Dataref.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Storageref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                startActivity(new Intent(DeleteRentCar.this,AddRentCarView.class));
+                                Toast.makeText(DeleteRentCar.this,"Item Deleted Successfully",Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(DeleteRentCar.this,"Error!",Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(DeleteRentCar.this,"Error!",Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
+            }
+        });
+
     }
     @Override
     public void onBackPressed() {
