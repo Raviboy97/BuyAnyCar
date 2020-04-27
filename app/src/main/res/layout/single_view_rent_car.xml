@@ -48,12 +48,13 @@
             android:layout_marginTop="10sp"
             android:layout_height="wrap_content"
             android:gravity="center">
+
             <TextView
                 android:id="@+id/rentCartitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Mercedes Benz S300 AMG LWB 2014"
+                android:text="@string/MercedesBenz"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 

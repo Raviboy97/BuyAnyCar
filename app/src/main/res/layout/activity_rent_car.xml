@@ -107,7 +107,7 @@
                                         android:layout_marginTop="16dp"
                                         android:fontFamily="@font/bungee"
                                         android:includeFontPadding="false"
-                                        android:text="New Car"
+                                        android:text="@string/NewCar"
                                         android:textSize="20sp" />
 
 
@@ -143,7 +143,7 @@
                                         android:layout_marginTop="17dp"
                                         android:fontFamily="@font/bungee"
                                         android:includeFontPadding="false"
-                                        android:text="Used Car"
+                                        android:text="@string/UsedCar"
                                         android:textSize="20sp" />
 
 
@@ -165,15 +165,15 @@
                         android:id="@+id/inputSearch_RentCar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Search Here"
                         android:layout_margin="20dp"
                         android:background="@drawable/input_search"
+                        android:drawableRight="@drawable/search_logo"
+                        android:hint="@string/Search"
+                        android:inputType="text"
                         android:paddingLeft="20dp"
                         android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:drawableRight="@drawable/search_logo"
                         android:paddingRight="10dp"
-                        android:inputType="text"/>
+                        android:paddingBottom="8dp" />
 
                 </LinearLayout>
 
