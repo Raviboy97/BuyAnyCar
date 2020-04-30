@@ -15,8 +15,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +35,7 @@ public class Accessories1 extends AppCompatActivity implements NavigationView.On
     Button accessoriesButton;
     TextView aTitle,aBrand,aModel,aCondition,aPrice,aDescription;
     DatabaseReference ref;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class Accessories1 extends AppCompatActivity implements NavigationView.On
         aDescription = findViewById(R.id.accessories_textView_Desc);
         accessoriesButton = findViewById(R.id.accessoriesBuy);
         ref = FirebaseDatabase.getInstance().getReference().child("Add Accessories");
+        mAuth = FirebaseAuth.getInstance();
 
         String AccessKey = getIntent().getStringExtra("AccessoriesKey");
         ref.child(AccessKey).addValueEventListener(new ValueEventListener() {
@@ -117,11 +121,21 @@ public class Accessories1 extends AppCompatActivity implements NavigationView.On
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
+                startActivity(new Intent(Accessories1.this,Dashboard.class));
                 break;
 
             case R.id.nav_profile:
+                String uid = mAuth.getCurrentUser().getUid();
                 Intent intent = new Intent(Accessories1.this, UserProfile.class);
+                intent.putExtra("UserID",uid);
                 startActivity(intent);
+                break;
+
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
+                finish();
                 break;
 
             case R.id.nav_share:

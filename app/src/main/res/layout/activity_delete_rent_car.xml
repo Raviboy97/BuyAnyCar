@@ -86,7 +86,7 @@
                                 android:layout_marginTop="16dp"
                                 android:fontFamily="@font/bungee"
                                 android:includeFontPadding="false"
-                                android:text="Mercedes Benz S300 AMG LWB 2014"
+                                android:text="@string/benz"
                                 android:textSize="20sp" />
 
                             <TextView
@@ -137,9 +137,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:layout_margin="5dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/baloo"
-                                android:text="Fuel Economy Rating"
+                                android:text="@string/Fuel"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                                 android:textColor="#000000"
                                 android:textSize="20sp" />
@@ -183,10 +186,10 @@
                                 android:text="15" />
 
                             <TextView
-                                android:layout_below="@+id/car1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Actual rating will vary with options,driving Conditions,Driving Habits and Vehicle Conditions" />
+                                android:layout_below="@+id/car1"
+                                android:text="@string/condition" />
 
 
                         </RelativeLayout>

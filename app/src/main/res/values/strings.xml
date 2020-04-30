@@ -3,9 +3,21 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="_0_0">0.0 %</string>
     <string name="mercedes_benz_s300_amg_lwb_2014_tyre_pack">Mercedes Benz S300 AMG LWB 2014 Tyre pack</string>
     <string name="lkr_1_000">LKR 1,000</string>
     <string name="description">DESCRIPTION</string>
     <string name="asasasasasasasassssssssssssssssssssddadadadadadad">asasasasasasasassssssssssssssssssssddadadadadadad</string>
+    <string name="topic">Topic</string>
+    <string name="Brand">Brand</string>
+    <string name="Model">Model</string>
+    <string name="Search">Search Here</string>
+    <string name="benz">Mercedes Benz S300 AMG LWB 2014</string>
+    <string name="Fuel">Fuel Economy Rating</string>
+    <string name="condition">Actual rating will vary with options,driving Conditions,Driving Habits and Vehicle Conditions</string>
+    <string name="NewCar">New Car</string>
+    <string name="UsedCar">Used Car</string>
+    <string name="MercedesBenz">Mercedes Benz S300 AMG LWB 2014</string>
+
 </resources>

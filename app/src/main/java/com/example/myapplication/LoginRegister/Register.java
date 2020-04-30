@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Admin.AdminDashboard;
+import com.example.myapplication.Customer.Dashboard;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -200,7 +201,7 @@ public class Register extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
                                     Toast.makeText(Register.this,"User Created Successfully",Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getApplicationContext(),AdminDashboard.class));
+                                    startActivity(new Intent(getApplicationContext(), Dashboard.class));
                                     finish();
                                 }else{
                                     Toast.makeText(Register.this,"Error !" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();

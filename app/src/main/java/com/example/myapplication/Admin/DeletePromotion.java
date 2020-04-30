@@ -17,7 +17,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.myapplication.Customer.UserProfile;
 import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -44,6 +43,7 @@ public class DeletePromotion extends AppCompatActivity implements NavigationView
     DatabaseReference ref,Dataref;
     StorageReference Storageref;
     ProgressBar progressBar;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,7 @@ public class DeletePromotion extends AppCompatActivity implements NavigationView
         deleteButton = findViewById(R.id.promotionDeleteBtn);
         progressBar = findViewById(R.id.prograss_delete_promotion);
         ref = FirebaseDatabase.getInstance().getReference().child("Add Promotions");
+        mAuth = FirebaseAuth.getInstance();
 
         String PromoKey = getIntent().getStringExtra("PromotionKey");
         Dataref = FirebaseDatabase.getInstance().getReference().child("Add Promotions").child(PromoKey);
@@ -152,11 +153,17 @@ public class DeletePromotion extends AppCompatActivity implements NavigationView
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
+                startActivity(new Intent(DeletePromotion.this,AdminDashboard.class));
                 break;
 
             case R.id.nav_profile:
-                Intent intent = new Intent(DeletePromotion.this, UserProfile.class);
+                String uid = mAuth.getCurrentUser().getUid();
+                Intent intent = new Intent(DeletePromotion.this, AdminUserProfile.class);
+                intent.putExtra("UserID",uid);
                 startActivity(intent);
+                break;
+            case R.id.nav_adduser:
+                startActivity(new Intent(DeletePromotion.this,RegisterAdmin.class));
                 break;
 
             case R.id.nav_logout:
@@ -164,9 +171,6 @@ public class DeletePromotion extends AppCompatActivity implements NavigationView
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
                 finish();
-                break;
-            case R.id.nav_share:
-                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
                 break;
         }
 

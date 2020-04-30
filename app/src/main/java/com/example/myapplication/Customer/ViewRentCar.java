@@ -15,8 +15,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +35,7 @@ public class ViewRentCar extends AppCompatActivity implements NavigationView.OnN
     TextView carTitle,carPrice,fuelCity,fuelHighway,carBrand,carModel,carBodyType,EngineCapacity,carMileage,modelYear,Transmission,Description;
     Button rentButton;
     DatabaseReference ref;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class ViewRentCar extends AppCompatActivity implements NavigationView.OnN
         Description = findViewById(R.id.textViewRentCarDescription);
         rentButton = findViewById(R.id.rentCarButton);
         ref = FirebaseDatabase.getInstance().getReference().child("Add Rent Cars");
+        mAuth = FirebaseAuth.getInstance();
 
         String CarKey = getIntent().getStringExtra("CarKey");
         ref.child(CarKey).addValueEventListener(new ValueEventListener() {
@@ -136,11 +140,21 @@ public class ViewRentCar extends AppCompatActivity implements NavigationView.OnN
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
+                startActivity(new Intent(ViewRentCar.this,Dashboard.class));
                 break;
 
             case R.id.nav_profile:
+                String uid = mAuth.getCurrentUser().getUid();
                 Intent intent = new Intent(ViewRentCar.this, UserProfile.class);
+                intent.putExtra("UserID",uid);
                 startActivity(intent);
+                break;
+
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
+                finish();
                 break;
 
             case R.id.nav_share:

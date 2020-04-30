@@ -82,15 +82,15 @@
                             android:id="@+id/inputSearch_AddRentCarView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Search Here"
                             android:layout_margin="20dp"
                             android:background="@drawable/input_search"
+                            android:drawableRight="@drawable/search_logo"
+                            android:hint="@string/Search"
+                            android:inputType="text"
                             android:paddingLeft="20dp"
                             android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:drawableRight="@drawable/search_logo"
                             android:paddingRight="10dp"
-                            android:inputType="text"/>
+                            android:paddingBottom="8dp" />
 
                     </androidx.cardview.widget.CardView>
 
