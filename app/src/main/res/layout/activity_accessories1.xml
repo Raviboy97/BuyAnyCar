@@ -88,7 +88,7 @@
                                 android:layout_marginTop="16dp"
                                 android:fontFamily="@font/bungee"
                                 android:includeFontPadding="false"
-                                android:text="Mercedes Benz S300 AMG LWB 2014 Tyre pack"
+                                android:text="@string/mercedes_benz_s300_amg_lwb_2014_tyre_pack"
                                 android:textSize="20sp"
                                 android:layout_marginBottom="5dp"/>
 
@@ -98,7 +98,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/accessories_title_label"
                                 android:includeFontPadding="false"
-                                android:text="LKR 1,000"
+                                android:text="@string/lkr_1_000"
                                 android:textColor="#000000"
                                 android:layout_marginBottom="5dp"/>
 
@@ -108,7 +108,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/accessories_Brand_label"
                                 android:includeFontPadding="false"
-                                android:text="LKR 1,000"
+                                android:text="@string/lkr_1_000"
                                 android:textColor="#000000"
                                 android:layout_marginBottom="5dp"/>
 
@@ -118,7 +118,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/accessories_model_label"
                                 android:includeFontPadding="false"
-                                android:text="LKR 1,000"
+                                android:text="@string/lkr_1_000"
                                 android:textColor="#000000"
                                 android:layout_marginBottom="5dp"/>
 
@@ -128,7 +128,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/accessories_condition_label"
                                 android:includeFontPadding="false"
-                                android:text="LKR 1,000"
+                                android:text="@string/lkr_1_000"
                                 android:textColor="#000000"
                                 android:layout_marginBottom="5dp"/>
 
@@ -157,7 +157,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/baloo"
-                            android:text="DESCRIPTION"
+                            android:text="@string/description"
                             android:textColor="#000"
                             android:textSize="20dp" />
 
@@ -165,7 +165,7 @@
                             android:id="@+id/accessories_textView_Desc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="asasasasasasasassssssssssssssssssssddadadadadadad"
+                            android:text="@string/asasasasasasasassssssssssssssssssssddadadadadadad"
                             android:layout_marginTop="30dp"/>
 
 

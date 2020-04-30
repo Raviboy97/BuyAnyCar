@@ -91,8 +91,6 @@
                             android:drawableRight="@drawable/search_logo"
                             android:paddingRight="10dp"
                             android:inputType="text"/>
-
-
                     </androidx.cardview.widget.CardView>
 
 
