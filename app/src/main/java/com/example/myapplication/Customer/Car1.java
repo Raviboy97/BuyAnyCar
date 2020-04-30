@@ -3,8 +3,10 @@ package com.example.myapplication.Customer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 public class Car1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
@@ -34,6 +40,7 @@ public class Car1 extends AppCompatActivity implements NavigationView.OnNavigati
     ImageView imageView;
     TextView carTitle,carPrice,fuelCity,fuelHighway,carBrand,carModel,carBodyType,carCondition,EngineCapacity,carMileage,modelYear,Transmission,Description;
     Button buyButton;
+    ProgressBar progressBar;
     FirebaseAuth mAuth;
 
     DatabaseReference ref;
@@ -60,10 +67,12 @@ public class Car1 extends AppCompatActivity implements NavigationView.OnNavigati
         modelYear = findViewById(R.id.textViewModelYear);
         Transmission = findViewById(R.id.textViewTransmission);
         Description = findViewById(R.id.textViewDescription);
+        buyButton = findViewById(R.id.BuyCarButton);
+        progressBar = findViewById(R.id.prograss_buy_car_btn);
         ref = FirebaseDatabase.getInstance().getReference().child("Add Cars");
         mAuth = FirebaseAuth.getInstance();
 
-        String CarKey = getIntent().getStringExtra("CarKey");
+        final String CarKey = getIntent().getStringExtra("CarKey");
         ref.child(CarKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -126,6 +135,63 @@ public class Car1 extends AppCompatActivity implements NavigationView.OnNavigati
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                ref.child(CarKey).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+
+
+                            String buyCarBrand = dataSnapshot.child("CarBrand").getValue().toString();
+                            String buyCarDescription = dataSnapshot.child("CarDescription").getValue().toString();
+                            String buyCarModel = dataSnapshot.child("CarModel").getValue().toString();
+                            String buyCarPrice = dataSnapshot.child("CarPrice").getValue().toString();
+                            String buyCarTitle = dataSnapshot.child("CarTopic").getValue().toString();
+                            String buyCarImage = dataSnapshot.child("ImageURL").getValue().toString();
+
+
+                            String uid = mAuth.getCurrentUser().getUid();
+                            ref = FirebaseDatabase.getInstance().getReference().child("Buy Details").child(uid).child(CarKey);
+
+                            HashMap<String,String> hashMap = new HashMap<>();
+                            hashMap.put("Topic",buyCarTitle);
+                            hashMap.put("Brand",buyCarBrand);
+                            hashMap.put("Model",buyCarModel);
+                            hashMap.put("Description",buyCarDescription);
+                            hashMap.put("Price",buyCarPrice);
+                            hashMap.put("ImageURL",buyCarImage);
+
+                            ref.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(Car1.this,"You Purchased Car Successfully",Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                                        progressBar.setVisibility(View.GONE);
+                                        finish();
+                                    }else{
+                                        Toast.makeText(Car1.this,"Error !" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
 
     }
 
