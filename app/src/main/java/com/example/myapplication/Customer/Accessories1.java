@@ -3,8 +3,10 @@ package com.example.myapplication.Customer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
 
 public class Accessories1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -36,6 +42,7 @@ public class Accessories1 extends AppCompatActivity implements NavigationView.On
     TextView aTitle,aBrand,aModel,aCondition,aPrice,aDescription;
     DatabaseReference ref;
     FirebaseAuth mAuth;
+    ProgressBar simplebar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +60,11 @@ public class Accessories1 extends AppCompatActivity implements NavigationView.On
         aPrice = findViewById(R.id.accessories_price_label);
         aDescription = findViewById(R.id.accessories_textView_Desc);
         accessoriesButton = findViewById(R.id.accessoriesBuy);
+        simplebar = findViewById(R.id.acc_Progress);
         ref = FirebaseDatabase.getInstance().getReference().child("Add Accessories");
         mAuth = FirebaseAuth.getInstance();
 
-        String AccessKey = getIntent().getStringExtra("AccessoriesKey");
+        final String AccessKey = getIntent().getStringExtra("AccessoriesKey");
         ref.child(AccessKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -103,6 +111,57 @@ public class Accessories1 extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        accessoriesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                simplebar.setVisibility(View.VISIBLE);
+                ref.child(AccessKey).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            String AccBrand = dataSnapshot.child("AccessoriesBrand").getValue().toString();
+                            String AccCarDescription = dataSnapshot.child("AccessoriesDescription").getValue().toString();
+                            String AccCarModel = dataSnapshot.child("AccessoriesModel").getValue().toString();
+                            String AccCarPrice = dataSnapshot.child("AccessoriesPrice").getValue().toString();
+                            String AccCarTitle = dataSnapshot.child("AccessoriesTopic").getValue().toString();
+                            String AccCarImage = dataSnapshot.child("ImageURL").getValue().toString();
+
+                            String uid = mAuth.getCurrentUser().getUid();
+                            ref = FirebaseDatabase.getInstance().getReference().child("Buy Details").child(uid).child(AccessKey);
+
+                            HashMap<String,String> hashMap = new HashMap<>();
+                            hashMap.put("Topic",AccCarTitle);
+                            hashMap.put("Brand",AccBrand);
+                            hashMap.put("Model",AccCarModel);
+                            hashMap.put("Description",AccCarDescription);
+                            hashMap.put("Price",AccCarPrice);
+                            hashMap.put("ImageURL",AccCarImage);
+
+                            ref.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(Accessories1.this,"You Purchased Accessories",Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                                        simplebar.setVisibility(View.GONE);
+                                        finish();
+                                    } else {
+                                        Toast.makeText(Accessories1.this,"Error !" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                        simplebar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
 
     }
     @Override
