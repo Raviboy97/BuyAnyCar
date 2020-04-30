@@ -22,12 +22,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.Model.BuyCarModel;
 import com.example.myapplication.Model.MyViewHolder;
 import com.example.myapplication.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -46,6 +48,7 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
     FirebaseRecyclerOptions<BuyCarModel> options;
     FirebaseRecyclerAdapter<BuyCarModel, MyViewHolder> adapter;
     DatabaseReference DataRef;
+    FirebaseAuth mAuth;
 
 
     @Override
@@ -61,6 +64,7 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
         BuyCarRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         BuyCarRecyclerView.setHasFixedSize(true);
         DataRef = FirebaseDatabase.getInstance().getReference().child("Add Cars");
+        mAuth = FirebaseAuth.getInstance();
 
 
         setSupportActionBar(toolbar);
@@ -160,11 +164,21 @@ public class BuyCar extends AppCompatActivity implements NavigationView.OnNaviga
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
+                startActivity(new Intent(BuyCar.this,Dashboard.class));
                 break;
 
             case R.id.nav_profile:
+                String uid = mAuth.getCurrentUser().getUid();
                 Intent intent = new Intent(BuyCar.this, UserProfile.class);
+                intent.putExtra("UserID",uid);
                 startActivity(intent);
+                break;
+
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
+                finish();
                 break;
 
             case R.id.nav_share:

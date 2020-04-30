@@ -27,6 +27,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     NavigationView navigationView;
     Toolbar toolbar;
     CardView buycar,rentcar,promotion,history,accessories;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         promotion = findViewById(R.id.promotion_card);
         history = findViewById(R.id.history_card);
         accessories = findViewById(R.id.accessories_card);
+        mAuth = FirebaseAuth.getInstance();
 
         //toolbar
 
@@ -124,7 +126,9 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 break;
 
             case R.id.nav_profile:
+                String uid = mAuth.getCurrentUser().getUid();
                 Intent intent = new Intent(Dashboard.this, UserProfile.class);
+                intent.putExtra("UserID",uid);
                 startActivity(intent);
                 break;
 

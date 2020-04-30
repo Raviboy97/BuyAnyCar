@@ -48,6 +48,7 @@ public class AddAccessoriesView extends AppCompatActivity implements NavigationV
     FirebaseRecyclerOptions<AccessoriesModel> options;
     FirebaseRecyclerAdapter<AccessoriesModel, AccessoriesViewHolder> adapter;
     DatabaseReference DataRef;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class AddAccessoriesView extends AppCompatActivity implements NavigationV
         AccessoriesRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         AccessoriesRecyclerView.setHasFixedSize(true);
         DataRef = FirebaseDatabase.getInstance().getReference().child("Add Accessories");
+        mAuth = FirebaseAuth.getInstance();
 
         ImageSlider imageSlider = findViewById(R.id.slider);
 
@@ -161,18 +163,20 @@ public class AddAccessoriesView extends AppCompatActivity implements NavigationV
                 break;
 
             case R.id.nav_profile:
+                String uid = mAuth.getCurrentUser().getUid();
                 Intent intent = new Intent(AddAccessoriesView.this, AdminUserProfile.class);
+                intent.putExtra("UserID",uid);
                 startActivity(intent);
+                break;
+            case R.id.nav_adduser:
+                startActivity(new Intent(AddAccessoriesView.this,RegisterAdmin.class));
                 break;
 
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
-                Toast.makeText(this, "Successfully Logged Out!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
                 finish();
-                break;
-            case R.id.nav_share:
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
                 break;
         }
 

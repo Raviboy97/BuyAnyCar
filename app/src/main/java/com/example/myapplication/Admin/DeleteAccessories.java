@@ -17,7 +17,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.myapplication.Customer.UserProfile;
 import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,6 +42,7 @@ public class DeleteAccessories extends AppCompatActivity implements NavigationVi
     DatabaseReference ref,Dataref;
     StorageReference Storageref;
     ProgressBar progressBar;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +62,7 @@ public class DeleteAccessories extends AppCompatActivity implements NavigationVi
         deleteButton = findViewById(R.id.accessoriesDeleteBtn);
         progressBar = findViewById(R.id.prograss_delete_accessories);
         ref = FirebaseDatabase.getInstance().getReference().child("Add Accessories");
+        mAuth = FirebaseAuth.getInstance();
 
         String AccessKey = getIntent().getStringExtra("AccessoriesKey");
         Dataref = FirebaseDatabase.getInstance().getReference().child("Add Accessories").child(AccessKey);
@@ -161,11 +162,17 @@ public class DeleteAccessories extends AppCompatActivity implements NavigationVi
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
+                startActivity(new Intent(DeleteAccessories.this,AdminDashboard.class));
                 break;
 
             case R.id.nav_profile:
-                Intent intent = new Intent(DeleteAccessories.this, UserProfile.class);
+                String uid = mAuth.getCurrentUser().getUid();
+                Intent intent = new Intent(DeleteAccessories.this, AdminUserProfile.class);
+                intent.putExtra("UserID",uid);
                 startActivity(intent);
+                break;
+            case R.id.nav_adduser:
+                startActivity(new Intent(DeleteAccessories.this,RegisterAdmin.class));
                 break;
 
             case R.id.nav_logout:
@@ -173,9 +180,6 @@ public class DeleteAccessories extends AppCompatActivity implements NavigationVi
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
                 finish();
-                break;
-            case R.id.nav_share:
-                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
                 break;
         }
 

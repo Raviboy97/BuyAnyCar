@@ -88,25 +88,25 @@
                             android:id="@+id/add_rent_car_topic"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Topic"
-                            android:inputType="text"
-                            android:layout_marginBottom="10dp"/>
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/topic"
+                            android:inputType="text" />
 
-                       <EditText
-                           android:id="@+id/add_rent_car_Brand"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:hint="Brand"
-                           android:inputType="textAutoComplete"
-                           android:layout_marginBottom="10dp"/>
+                        <EditText
+                            android:id="@+id/add_rent_car_Brand"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/Brand"
+                            android:inputType="textAutoComplete" />
 
                         <EditText
                             android:id="@+id/add_rent_car_model"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Model"
-                            android:inputType="textAutoComplete"
-                            android:layout_marginBottom="10dp"/>
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/Model"
+                            android:inputType="textAutoComplete" />
 
                         <EditText
                             android:id="@+id/add_rent_car_year"
