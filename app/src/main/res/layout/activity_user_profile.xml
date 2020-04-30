@@ -37,6 +37,7 @@
                 app:fontFamily="@font/bungee" />
 
             <TextView
+                android:id="@+id/username_cus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/full_name"
@@ -159,17 +160,17 @@
                 android:hint="Full Name"
                 android:drawableLeft="@drawable/profile_icon"
                 android:drawablePadding="10dp"
-                android:text="Full Name"/>
+                android:inputType="text"/>
 
             <EditText
                 android:id="@+id/user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:hint="Full Name"
+                android:hint="User Name"
                 android:drawableLeft="@drawable/profile_icon"
                 android:drawablePadding="10dp"
-                android:text="User Name"/>
+                android:inputType="text"/>
 
             <EditText
                 android:id="@+id/user_email_address"
@@ -179,7 +180,7 @@
                 android:hint="E-mail"
                 android:drawableLeft="@drawable/email_icon"
                 android:drawablePadding="10dp"
-                android:text="E-mail"/>
+                android:inputType="textEmailAddress"/>
 
 
             <EditText
@@ -190,7 +191,7 @@
                 android:hint="Mobile Number"
                 android:drawableLeft="@drawable/mobile_icon"
                 android:drawablePadding="10dp"
-                android:text="Mobile Number"/>
+                android:inputType="phone"/>
 
 
             <Button
@@ -201,7 +202,9 @@
                 android:fontFamily="@font/baloo"
                 android:text="Update"
                 android:textColor="#fff"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:onClick="updateUser"
+                />
 
             <ProgressBar
                 android:id="@+id/user_update_prograssbar"
@@ -209,7 +212,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:visibility="invisible" />
 
         </LinearLayout>
 

@@ -22,13 +22,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.myapplication.Customer.UserProfile;
+import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.Model.RentCarModel;
 import com.example.myapplication.Model.RentCarViewHolder;
 import com.example.myapplication.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -47,6 +48,7 @@ public class AddRentCarView extends AppCompatActivity implements NavigationView.
     FirebaseRecyclerOptions<RentCarModel> options;
     FirebaseRecyclerAdapter<RentCarModel, RentCarViewHolder> adapter;
     DatabaseReference DataRef;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class AddRentCarView extends AppCompatActivity implements NavigationView.
         DeleteRentCarRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         DeleteRentCarRecyclerView.setHasFixedSize(true);
         DataRef = FirebaseDatabase.getInstance().getReference().child("Add Rent Cars");
+        mAuth = FirebaseAuth.getInstance();
 
         setSupportActionBar(toolbar);
 
@@ -155,15 +158,24 @@ public class AddRentCarView extends AppCompatActivity implements NavigationView.
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
+                startActivity(new Intent(AddRentCarView.this,AdminDashboard.class));
                 break;
 
             case R.id.nav_profile:
-                Intent intent = new Intent(AddRentCarView.this, UserProfile.class);
+                String uid = mAuth.getCurrentUser().getUid();
+                Intent intent = new Intent(AddRentCarView.this, AdminUserProfile.class);
+                intent.putExtra("UserID",uid);
                 startActivity(intent);
                 break;
+            case R.id.nav_adduser:
+                startActivity(new Intent(AddRentCarView.this,RegisterAdmin.class));
+                break;
 
-            case R.id.nav_share:
-                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
+                finish();
                 break;
         }
 

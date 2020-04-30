@@ -14,8 +14,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +33,7 @@ public class Promotion1 extends AppCompatActivity implements NavigationView.OnNa
     ImageView imageView;
     TextView pTitle,pDiscount,pDescription;
     DatabaseReference ref;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class Promotion1 extends AppCompatActivity implements NavigationView.OnNa
         pDiscount = findViewById(R.id.textViewPromotionDiscount);
         pDescription = findViewById(R.id.textViewPromotionDescription);
         ref = FirebaseDatabase.getInstance().getReference().child("Add Promotions");
+        mAuth = FirebaseAuth.getInstance();
 
 
         String PromoKey = getIntent().getStringExtra("PromotionKey");
@@ -109,11 +113,21 @@ public class Promotion1 extends AppCompatActivity implements NavigationView.OnNa
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
+                startActivity(new Intent(Promotion1.this,Dashboard.class));
                 break;
 
             case R.id.nav_profile:
+                String uid = mAuth.getCurrentUser().getUid();
                 Intent intent = new Intent(Promotion1.this, UserProfile.class);
+                intent.putExtra("UserID",uid);
                 startActivity(intent);
+                break;
+
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
+                finish();
                 break;
 
             case R.id.nav_share:

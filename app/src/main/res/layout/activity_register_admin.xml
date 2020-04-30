@@ -125,7 +125,6 @@
             android:transitionName="signin_tran" />
 
 
-
         <ProgressBar
             android:id="@+id/admin_register_progressBar"
             style="?android:attr/progressBarStyle"

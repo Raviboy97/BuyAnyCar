@@ -15,7 +15,6 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.myapplication.Customer.UserProfile;
 import com.example.myapplication.LoginRegister.Login;
 import com.example.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
@@ -28,6 +27,7 @@ public class AdminDashboard extends AppCompatActivity implements NavigationView.
     NavigationView navigationView;
     Toolbar toolbar;
     CardView add_car,add_rent_car,add_promotion,add_accessories,delete_car,delete_rent_car,delete_promotion,delete_accessories;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class AdminDashboard extends AppCompatActivity implements NavigationView.
         delete_rent_car = findViewById(R.id.removerentcar_card);
         delete_promotion = findViewById(R.id.removepromotion_card);
         delete_accessories = findViewById(R.id.removeaccessories_card);
+        mAuth = FirebaseAuth.getInstance();
 
         //toolbar
 
@@ -140,19 +141,21 @@ public class AdminDashboard extends AppCompatActivity implements NavigationView.
                 break;
 
             case R.id.nav_profile:
-                Intent intent = new Intent(AdminDashboard.this, UserProfile.class);
+                String uid = mAuth.getCurrentUser().getUid();
+                Intent intent = new Intent(AdminDashboard.this, AdminUserProfile.class);
+                intent.putExtra("UserID",uid);
                 startActivity(intent);
                 break;
-
+            case R.id.nav_adduser:
+                startActivity(new Intent(AdminDashboard.this,RegisterAdmin.class));
+                break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 Toast.makeText(this,"Successfully Logged Out!",Toast.LENGTH_SHORT).show();
                 finish();
                 break;
-            case R.id.nav_share:
-                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
-                break;
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
